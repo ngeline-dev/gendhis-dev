@@ -2,6 +2,7 @@
 
 <body>
     <form action="{{ route('store.order', ['id' => $data->id]) }}" method="POST">
+        @csrf
         <div class="row">
             <div class="col-lg-12">
                 <label for="">Nama Pemesan</label>
@@ -60,7 +61,7 @@
                 </div>
                 <div class="col-lg-12">
                     <label for="">Usia Anak Yang Didaftarkan</label>
-                    <input type="text" class="@error('usia') is-invalid @enderror" name="usia"
+                    <input type="number" class="@error('usia') is-invalid @enderror" name="usia"
                         value="{{ old('usia') }}" autofocus>
                     @error('usia')
                         <span class="invalid-feedback" role="alert">
@@ -84,7 +85,7 @@
             @isset($data->getJasaFotoFromProduk)
                 <div class="col-lg-12">
                     <label for="">Tanggal Pemesanan</label>
-                    <input type="text" class="@error('tanggal') is-invalid @enderror" name="tanggal"
+                    <input type="date" class="@error('tanggal') is-invalid @enderror" name="tanggal"
                         value="{{ old('tanggal') }}" autofocus>
                     @error('tanggal')
                         <span class="invalid-feedback" role="alert">

@@ -11,6 +11,7 @@ use App\Http\Controllers\MasterBimbelController;
 use App\Http\Controllers\MasterJasaFotoController;
 use App\Http\Controllers\ListPaketController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\OwnerController;
 
 /*
@@ -78,6 +79,12 @@ Route::group(['middleware' => 'auth'], function(){
         /* Order */
         Route::get('/form-order/{id}', [OrderController::class, 'FormOrder'])->name('form.order');
         Route::post('/form-order/{id}', [OrderController::class, 'StoreOrder'])->name('store.order');
+        Route::get('/history-order', [OrderController::class, 'HistoryOrder'])->name('history.order');
+
+        /* Transaksi */
+        Route::get('/form-pembayaran/{id}', [TransaksiController::class, 'FormPembayaran'])->name('form.pembayaran');
+        Route::post('/form-pembayaran/{id}', [TransaksiController::class, 'StorePembayaran'])->name('store.pembayaran');
+
     });
 
     /* Owner */
@@ -88,7 +95,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/kelolaakun/{id}', [OwnerController::class, 'edit'])->name('o.adminEdit');
         Route::post('/update', [OwnerController::class, 'update'])->name('o.adminUpdate');
         Route::get('/delete/{id}', [OwnerController::class, 'destroy'])->name('o.adminDelete');
-        
+
     });
 
     /* Owner & Admin */

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProdukModel;
+use App\Models\OrderModel;
+use App\Models\DetailOrderModel;
+use Validator, Auth, Alert;
 
 class OrderController extends Controller
 {
@@ -14,7 +17,7 @@ class OrderController extends Controller
         return view('user.order.index', compact('data'));
     }
 
-    public function StoreOrder($id)
+    public function StoreOrder(Request $request, $id)
     {
         $dataProduk = ProdukModel::where('id', $id)->first();
 
@@ -23,32 +26,27 @@ class OrderController extends Controller
                 $rules = [
                     'nama' => ['required'],
                     'telepon' => ['required'],
-                    'ktp' => ['required', 'numeric|min:2'],
-                    'harga' => ['required'],
-                    'jadwal' => ['required',],
-                    'waktu' => ['required'],
+                    'ktp' => ['required', 'min:16'],
                 ];
                 break;
 
             case 'Bimbel':
                 $rules = [
                     'nama' => ['required'],
-                    'deskripsi' => ['required'],
-                    'foto' => ['required', 'file', 'mimes:png,jpg,jpeg'],
-                    'harga' => ['required'],
-                    'jadwal' => ['required',],
-                    'waktu' => ['required'],
+                    'telepon' => ['required'],
+                    'ktp' => ['required', 'min:16'],
+                    'anak' => ['required'],
+                    'usia' => ['required'],
                 ];
                 break;
 
             default:
                 $rules = [
                     'nama' => ['required'],
-                    'deskripsi' => ['required'],
-                    'foto' => ['required', 'file', 'mimes:png,jpg,jpeg'],
-                    'harga' => ['required'],
-                    'jadwal' => ['required',],
-                    'waktu' => ['required'],
+                    'telepon' => ['required'],
+                    'ktp' => ['required', 'min:16'],
+                    'tanggal' => ['required'],
+                    'alamat' => ['required'],
                 ];
                 break;
         }
@@ -56,12 +54,13 @@ class OrderController extends Controller
         $messages = [];
 
         $attributes = [
-            'nama' => 'Nama Paket',
-            'deskripsi' => 'Deskripsi Paket',
-            'foto' => 'Foto Paket',
-            'harga' => 'Harga Paket',
-            'jadwal' => 'Jadwal Bimbel',
-            'waktu' => 'Waktu Bimbel',
+            'nama' => 'Nama Pemesan',
+            'telepon' => 'Telepon Pemesan',
+            'ktp' => 'KTP Pemesan',
+            'anak' => 'Anak Yang Didaftarkan',
+            'usia' => 'Usia Anak Yang Didaftarkan',
+            'tanggal' => 'Tanggal Pemesanan',
+            'alamat' => 'Alamat Pemesanan',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages, $attributes);
@@ -69,29 +68,43 @@ class OrderController extends Controller
         if(!$validator->passes()){
             return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
         } else {
-            $data = MasterBimbelModel::where('id', $id)->first();
-            $data->nama_paket = $request->nama;
-            $data->deskripsi_paket = $request->deskripsi;
-
-            if ($request->hasFile('foto')){
-                $file = $request->file('foto');
-                $filename = time()."_".$file->getClientOriginalName();
-                $file->move(public_path('assets/img'), $filename);
-
-                $path = public_path() . '/assets/img/' . $data->foto_paket;
-                File::delete($path);
-
-                $data->foto_paket = $filename;
-            }
-            $data->harga_paket = $request->harga;
-            $data->jadwal_bimbel = $request->jadwal;
-            $data->waktu_bimbel = \Carbon\Carbon::parse($request->waktu)->format('H:i');
-
+            $data = new OrderModel;
+            $data->produk_id = $id;
+            $data->users_id = Auth::user()->id;
             $data->save();
 
-            Alert::success('Berhasil Memperbarui Data');
+            $detail = new DetailOrderModel;
+            $detail->order_id = $data->id;
+            $detail->nama_pemesan = $request->nama;
+            $detail->nomor_telepon_pemesan = $request->telepon;
+            $detail->nomor_ktp_pemesan = $request->ktp;
 
-            return redirect()->route('master-bimbel.index');
+            switch ($dataProduk->kategori) {
+                case 'Bimbel':
+                    $detail->bi_nama_anak = $request->anak;
+                    $detail->bi_usia_anak = $request->usia;
+                    break;
+
+                case 'Foto':
+                    $detail->ft_tanggal_pemesanan = $request->tanggal;
+                    $detail->ft_alamat_pemesanan = $request->alamat;
+                    break;
+
+                default:
+                    break;
+            }
+
+            $detail->save();
+
+            Alert::success('Berhasil Melakukan Pemesanan');
+
+            return redirect()->route('history.order');
         }
+    }
+
+    public function HistoryOrder()
+    {
+        $data = OrderModel::with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getProdukFromOrder.getBimbelFromProduk','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
+        return view('user.order.show', compact('data'));
     }
 }

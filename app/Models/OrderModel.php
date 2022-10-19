@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\DetailOrderModel;
 use App\Models\ProdukModel;
 use App\Models\User;
+use App\Models\TransaksiModel;
 
 class OrderModel extends Model
 {
@@ -33,5 +34,10 @@ class OrderModel extends Model
     public function getAdminFromOrder()
     {
         return $this->belongsTo(User::class, 'admin_id', 'id');
+    }
+
+    public function getTransaksiFromOrder()
+    {
+        return $this->belongsTo(TransaksiModel::class, 'id', 'order_id');
     }
 }
