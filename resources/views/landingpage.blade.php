@@ -114,7 +114,7 @@
             <li><a href="#about">Tentang CV. Gendhis</a></li>
             <li><a href="#layanan">Layanan CV. Gendhis</a></li>
             <li><a href="#services">Keunggulan CV. Gendhis</a></li>
-            <li><a href="#sukucadang">About Us</a></li>
+            <li><a href="#aboutus">About Us</a></li>
             <li><a href="/login"><button class="btn btn-primary">LOGIN</button></a></li>
         </ul>
     </nav>
@@ -195,77 +195,80 @@
     </section>
 
     <section class="services" id="services">
-        <h2>KEUNGGULAN BENGKEL</h2>
+        <h2>KEUNGGULAN CV. GENDHIS</h2>
         <div class="services-cards">
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/timwork.png" alt="">
                 <center>
                     <h3>Manajemen Tim</h3>
-                    <p>Bengkel Mobil Delta Memberdayakan tim, Ciptakan lingkungan kerja yang inklusif, Mendiskusikan
-                        performa kerja dan Punya strategi jelas.</p>
-                    <!-- <a href="">Learn More</a> -->
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quis eaque molestiae doloremque
+                        voluptate excepturi, error recusandae enim odit aut numquam, dolore maxime iure fugit officiis
+                        quos aliquid. Consequatur, accusamus?</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/management.png" alt="">
                 <center>
                     <h3>Manajemen Booking</h3>
-                    <p>Manajemen booking service bengkel mobil delta dapat mempermudah pelanggan dalam mencari informasi
-                        service dan melakukan pembookingan service.</p>
-                    <!-- <a href="">Learn More</a> -->
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed earum eum eveniet aliquid
+                        asperiores quae, quam adipisci in quasi quos libero delectus optio porro a ab provident, facilis
+                        vitae?</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/inovasi.png" alt="">
                 <center>
                     <h3>Inovasi</h3>
-                    <p>Pelayanan Inovasi Digital Dukung Bisnis Bengkel Mobil Delta insentif bagi pemilik bengkel serta
-                        mekanik, dan juga proses edukasi secara online.</p>
-                    <!-- <a href="">Learn More</a> -->
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam sit culpa ullam officia, iste
+                        dolorem beatae tenetur dolores veniam quae deleniti doloremque dolor. Non nobis animi
+                        consequatur mollitia fuga a?</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/puas.png" alt="">
                 <center>
                     <h3>Pelayanan</h3>
-                    <p>Bengkel Mobil Delta memberikan pelayanan gratis servis yang dapat memberikan kepuasan kepada
-                        pelanggan dengan standar yang telah ditetapkan.</p>
-                    <!-- <a href="">Learn More</a> -->
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum sint officiis provident animi
+                        iusto. Quos, corrupti? Quod, reiciendis quam temporibus iste explicabo ea assumenda sed quidem
+                        ipsam sequi accusantium autem.</p>
             </div>
         </div>
     </section>
 
-    <section class="news" id="sukucadang">
-        <h2>INFORMASI SERVIS</h2>
+    <section class="news" id="aboutus">
+        <h2>INFORMASI PELAYANAN OFFLINE</h2>
         <div class="services-cards">
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/layananservis.jpg" alt="">
                 <div class="text">
-                    <h3>Layanan Servis</h3>
-                    <span>Bengkel Mobil Delta</span>
-                    <p>Layanan Service adalah tindakan dalam melayani pelanggan dengan baik dalam memberikan pelayanan
-                        dan solusi untuk menyelesaikan permasalahan yang dihadapi oleh konsumen.</p>
+                    <h3>Pelayanan</h3>
+                    <span>CV. Gendhis</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore sit recusandae iste quisquam
+                        eaque enim nemo molestiae, nisi animi nostrum asperiores alias incidunt ex ipsa consectetur vero
+                        obcaecati doloribus? Dolore?</p>
                     <hr>
                     <a href="">Learn More</a>
                 </div>
             </div>
             <div class="services-card">
-                <img src="{{ asset('assets') }}/tema/assets/img/sukucadang.jpg" alt="">
+                <img src="{{ asset('assets/bg-web.png') }}" alt="">
                 <div class="text">
-                    <h3>Suku Cadang</h3>
-                    <span>Bengkel Mobil Delta</span>
-                    <p>Onderdil atau suku cadang adalah komponen dari mesin yang dicadangkan untuk perbaikan atau
-                        penggantian bagian kendaraan yang mengalami kerusakan baik mobil ataupun motor.</p>
+                    <h3>Paket</h3>
+                    <span>CV. Gendhis</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae impedit id labore, culpa quidem
+                        aliquam natus aliquid magni facere aut ea hic minima incidunt praesentium, soluta sit,
+                        architecto provident! Ipsa!</p>
                     <hr>
-                    <a href="">Learn More</a>
+                    <a href="#">Learn More</a>
                 </div>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/jambuka.png" alt="">
                 <div class="text">
                     <h3>Lokasi & Jam Buka</h3>
-                    <span>Bengkel Mobil Delta</span>
-                    <p>Jam operasional bengkel mobil delta adalah Senin-Sabtu dari jam 8 pagi - 3 sore dan tutup setiap
-                        hari Minggu. Jl. Bence Gang 1, Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132</p>
+                    <span>CV. Gendhis</span>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor sequi consequuntur doloribus
+                        quaerat minima tenetur aspernatur nulla, nihil id at, esse excepturi perferendis quos ratione
+                        numquam! Soluta vel voluptas qui!</p>
                     <hr>
-                    <a href="https://goo.gl/maps/xBL2ezh7xg2RCfDeA">Learn More</a>
+                    <a href="https://goo.gl/maps/Hvcpt6SvgXr7Gx97A">Maps CV. Gendhis</a>
                 </div>
             </div>
         </div>
@@ -286,8 +289,8 @@
         <div class="sosmed">
             <h3>Hubungi Kami</h3>
             <ul>
-                <li>bengkel.delta@gmail.com</li>
-                <li>0852-3577-5571</li>
+                <li>cv.gendhis@gmail.com</li>
+                <li>0852-3577-2231</li>
                 <li>Jl. Bence Gang 1,
                     Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132.</li>
             </ul>

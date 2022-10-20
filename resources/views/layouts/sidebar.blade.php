@@ -3,7 +3,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">
-                    <h3>GENDHIS</h3>
+                    <h3>CV. GENDHIS</h3>
                 </li>
 
                 <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }}">
@@ -79,6 +79,12 @@
                     <a href="" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Kelola Akun</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('logout') }}" class="sidebar-link">
+                        <i class="bi bi-door-open-fill"></i>
+                        <span>Logout</span>
                     </a>
                 </li>
 
