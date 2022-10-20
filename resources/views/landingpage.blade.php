@@ -90,6 +90,11 @@
             color: black;
             text-align: left;
         }
+
+        .btn {
+            width: 90px;
+            height: 35px;
+        }
     </style>
 </head>
 
@@ -110,6 +115,7 @@
             <li><a href="#layanan">Layanan CV. Gendhis</a></li>
             <li><a href="#services">Keunggulan CV. Gendhis</a></li>
             <li><a href="#sukucadang">About Us</a></li>
+            <li><a href="/login"><button class="btn btn-primary">LOGIN</button></a></li>
         </ul>
     </nav>
     <header id="home">
@@ -122,9 +128,6 @@
                 <h1>SELAMAT DATANG DI<br> <b>CV. GENDHIS</b></h1>
                 <p>Travel Agensi Terbaik, Kelas Bimbel yang terjangkau, dan Jasa Fotografer Terbaik</p>
             </div>
-            <a href="">
-                <button>LOGIN</button>
-            </a>
         </div>
     </header>
     <section class="about" id="about">
@@ -135,7 +138,7 @@
                 amet esse fugiat exercitation aute do reprehenderit sint. Exercitation est minim adipisicing irure
                 consequat fugiat. Mollit exercitation sunt reprehenderit ex aliquip deserunt.</p>
             <p>Eu amet magna tempor aliqua ipsum aliqua.</p>
-            <a href="">
+            <a href="/register">
                 <button>COBA SEKARANG</button>
             </a>
         </div>
