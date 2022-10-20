@@ -119,12 +119,12 @@
                                                         value="{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}"
                                                         readonly>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                {{-- <div class="col-lg-6">
                                                     <label for="">Nomor KTP</label>
                                                     <input type="text"
                                                         value="{{ $ndata->getDetailOrderFromOrder->nomor_ktp_pemesan }}"
                                                         readonly>
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-lg-6">
                                                     <label for="">Nomor Telepon</label>
                                                     <input type="text"

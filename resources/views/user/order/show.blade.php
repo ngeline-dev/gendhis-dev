@@ -154,12 +154,14 @@
                                                             value="{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}"
                                                             readonly>
                                                     </div>
-                                                    <div class="col-lg-6">
-                                                        <label for="">Nomor KTP</label>
-                                                        <input type="text"
-                                                            value="{{ $ndata->getDetailOrderFromOrder->nomor_ktp_pemesan }}"
-                                                            readonly>
-                                                    </div>
+                                                    @if ($ndata->getProdukFromOrder->kategori != 'Bimbel')
+                                                        <div class="col-lg-6">
+                                                            <label for="">Nomor KTP</label>
+                                                            <input type="text"
+                                                                value="{{ $ndata->getDetailOrderFromOrder->nomor_ktp_pemesan }}"
+                                                                readonly>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-lg-6">
                                                         <label for="">Nomor Telepon</label>
                                                         <input type="text"
@@ -176,7 +178,7 @@
                                                         <div class="col-lg-6">
                                                             <label for="">Usia Anak Yang Didaftarkan</label>
                                                             <input type="text"
-                                                                value="{{ $ndata->getDetailOrderFromOrder->usia_anak }}"
+                                                                value="{{ $ndata->getDetailOrderFromOrder->bi_usia_anak }}"
                                                                 readonly>
                                                         </div>
                                                     @endif
@@ -270,15 +272,15 @@
         </div>
         </div>
         <!--
-                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-                    </script>
-                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-                        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-                    </script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-                        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-                    </script> -->
+                            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+                            </script>
+                            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+                            </script>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+                                integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+                            </script> -->
 
         @include('sweetalert::alert')
         </body>
