@@ -3,7 +3,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">
-                    <h3>CV. GENDHIS</h3>
+                    <h3>GENDHIS</h3>
                 </li>
 
                 <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }}">
@@ -21,24 +21,40 @@
                         <li class="submenu-item {{ Request::is('master-travel') ? 'active' : '' }}">
                             <a href="{{ route('master-travel.index') }}">Master Data Travel</a>
                         </li>
-                        <li class="submenu-item {{ Request::is('list-order.travel') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::is('list-order-travel') ? 'active' : '' }}">
                             <a href="{{ route('list-order.travel') }}">Data Order Travel</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('master-bimbel') ? 'active' : '' }}">
-                    <a href="{{ route('master-bimbel.index') }}" class="sidebar-link">
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
                         <i class="bi bi-book-fill"></i>
                         <span>Kelola Bimbel</span>
                     </a>
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::is('master-bimbel') ? 'active' : '' }}">
+                            <a href="{{ route('master-bimbel.index') }}">Master Data Bimbel</a>
+                        </li>
+                        <li class="submenu-item {{ Request::is('list-order-bimbel') ? 'active' : '' }}">
+                            <a href="{{ route('list-order.bimbel') }}">Data Order Bimbel</a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('master-jasa-foto') ? 'active' : '' }}">
-                    <a href="{{ route('master-jasa-foto.index') }}" class="sidebar-link">
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
                         <i class="bi bi-egg-fill"></i>
                         <span>Kelola Studio Foto</span>
                     </a>
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::is('master-jasa-foto') ? 'active' : '' }}">
+                            <a href="{{ route('master-jasa-foto.index') }}">Master Data Jasa Foto</a>
+                        </li>
+                        <li class="submenu-item {{ Request::is('list-order-jasa-foto') ? 'active' : '' }}">
+                            <a href="{{ route('list-order.foto') }}">Data Order Jasa Foto</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item has-sub">
