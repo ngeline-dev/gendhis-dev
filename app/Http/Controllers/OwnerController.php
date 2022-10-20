@@ -3,32 +3,46 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Validator, Alert, File;
 
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    // Dashboard Owner
-    public function show()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        return view('owner.index' );
+        $data = User::where('role', 'Admin')->latest()->get();
+        return view('owner.akun.index', compact('data'));
     }
 
-    public function index(Request $request)
+    public function create()
     {
-        return view('owner.akun.kelolaakun');
+        return view('owner.akun.create');
     }
 
-    public function kelolaakun(Request $request)
+    public function store(Request $request)
     {
-        $cari=$request->input('cari');
-        if(empty($cari)){
-            $ndata = User::paginate(5);
-        }
-        return view('owner.akun.kelolaakun', compact('ndata'));
+
+            $data = User::create([
+                'name' => $request->name,
+                'role' => $request->role,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $data->save();
+
+            Alert::success('Berhasil Menambahkan Data');
+
+            return redirect()->route('master-travel.index');
+        
     }
-
-
+    
     // Membuat Role Admin
     public function register(Request $request)
     {
@@ -45,31 +59,29 @@ class OwnerController extends Controller
     // edit
     public function edit($id)
     {
-        //memanggil model, query funsi cari
-        $data = User::find($id);
-
-        return response()->json($data);
+        $data = User::where('id', $id)->first();
+        return view('owner.akun.edit', compact('data'));
     }
 
     public function update(Request $request)
     {
-        $data = User::where('id',$request->id)->first();
-        // $data = Role::where('id', $request->$role_id)->get();
-
+        $data = User::where('id', $request->id)->first();
         $data->name = $request->name;
         $data->role = $request->role;
         $data->email = $request->email;
-        $data->password = $request->password;
+        $data->password = Hash::make($request->password);
         $data->save();
+        Alert::success('Berhasil Menambah Data');
 
-        return redirect()->back()->with('success', 'Berhasil Edit Data '.$data-> name);
+
+        return redirect()->route('master-kelolaadmin.index');
     }
 
     // Hapus Akun Ademin
     public function destroy($id)
     {
         //memanggil model, query dengan kondisi where frist
-        $data = AdminModel::where('id', $id)->first();
+        $data = User::where('id', $id)->first();
         $data->delete();
 
         //redirect kembali ke halaman sebelumnya
@@ -83,9 +95,5 @@ class OwnerController extends Controller
             return view('owner.laporan.index');
     }
 
-
-
-
-
-
+    
 }
