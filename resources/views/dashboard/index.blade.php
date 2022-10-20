@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Dashboard Admin CV. GENDHIS')
 @section('heading', 'Dashboard Admin')
-@section('page','')
+@section('page', '')
 @section('content')
     <section class="row">
         <div class="col-12 col-lg-9">
@@ -17,9 +17,9 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">
-                                        Profile Views
+                                        Jumlah Order Travel
                                     </h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $data[0] }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -35,8 +35,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                    <h6 class="text-muted font-semibold">Jumlah Order Bimbel</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $data[1] }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -52,8 +52,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
+                                    <h6 class="text-muted font-semibold">Jumlah Order Studio Foto</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $data[2] }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -69,15 +69,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
+                                    <h6 class="text-muted font-semibold">Total Pendapatan</h6>
+                                    <h6 class="font-extrabold mb-0">Rp. {{ $data[3] }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -202,9 +202,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <div class="col-12 col-lg-3">
+        {{-- <div class="col-12 col-lg-3">
             <div class="card">
                 <div class="card-body py-4 px-4">
                     <div class="d-flex align-items-center">
@@ -265,6 +265,6 @@
                     <div id="chart-visitors-profile"></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 @endsection
