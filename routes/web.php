@@ -117,4 +117,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'CheckRole:Owner,Admin'], function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
+
+    Route::group(['middleware' => 'CheckRole:Customer'], function(){
+        Route::get('/landingpage', [DashboardController::class, 'indexcust'])->name('landingpage');
+    });
 });
