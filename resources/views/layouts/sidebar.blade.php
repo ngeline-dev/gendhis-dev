@@ -26,12 +26,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item {{ Request::is('master-travel') ? 'active' : '' }}">
-                    <a href="{{ route('master-travel.index') }}" class="sidebar-link">
-                        <i class="bi bi-map-fill"></i>
-                        <span>Kelola Travel</span>
-                    </a>
-                </li>
 
                 <li class="sidebar-item {{ Request::is('master-bimbel') ? 'active' : '' }}">
                     <a href="{{ route('master-bimbel.index') }}" class="sidebar-link">

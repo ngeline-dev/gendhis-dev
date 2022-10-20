@@ -119,6 +119,6 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::group(['middleware' => 'CheckRole:Customer'], function(){
-        Route::get('/landingpage', [DashboardController::class, 'indexcust'])->name('landingpage');
+        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
     });
 });

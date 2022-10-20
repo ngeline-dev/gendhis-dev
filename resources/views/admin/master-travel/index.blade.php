@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Master Data Bimbel')
-@section('heading', 'Master Data Bimbel')
-@section('page', 'Master Data Bimbel')
+@section('title', 'Master Data Travel')
+@section('heading', 'Master Data Travel')
+@section('page', 'Master Data Travel')
 @section('content')
     <section class="section">
         <div class="card">

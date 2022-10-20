@@ -13,6 +13,6 @@ class DashboardController extends Controller
 
     public function indexcust()
     {
-        return view('landingpage');
+        return view('user.beranda');
     }
 }
