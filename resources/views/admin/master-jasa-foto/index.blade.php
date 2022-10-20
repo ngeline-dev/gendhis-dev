@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Master Data Bimbel')
-@section('heading', 'Master Data Bimbel')
-@section('page', 'Master Data Bimbel')
+@section('title', 'Master Data Studio Foto')
+@section('heading', 'Master Data Studio Foto')
+@section('page', 'Master Data Studio Foto')
 @section('content')
     <section class="section">
         <div class="card">
@@ -29,17 +29,17 @@
                                 <td><img src="/assets/img/{{ $ndata->foto_paket }}" width="50" height="50"></td>
                                 <td>{{ $ndata->harga_paket }}</td>
                                 <td><a href="{{ route('master-jasa-foto.edit', ['master_jasa_foto' => $ndata->id]) }}"
-                                        class="btn icon icon-left btn-warning"><i data-feather="trash"></i>
+                                        class="btn icon icon-left btn-warning"><i data-feather="edit"></i>
                                         Edit Data</a></td>
                                 <td><a href="{{ route('master-jasa-foto.destroy', ['master_jasa_foto' => $ndata->id]) }}"
                                         onclick="return confirm('Apakah Kamu yakin ?')"
-                                        class="btn icon icon-left btn-danger" role="button"><i data-feather="download"></i>
+                                        class="btn icon icon-left btn-danger" role="button"><i data-feather="trash"></i>
                                         Delete Data</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('master-bimbel.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data
+                <a href="{{ route('master-jasa-foto.create') }}" class="btn btn-primary btn-l" role="button">Tambah Data
                     Jasa Foto</a>
             </div>
         </div>

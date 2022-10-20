@@ -16,7 +16,7 @@ class OwnerController extends Controller
 
     public function index(Request $request)
     {
-        
+        return view('owner.akun.kelolaakun');
     }
 
     public function kelolaakun(Request $request)
@@ -27,7 +27,7 @@ class OwnerController extends Controller
         }
         return view('owner.akun.kelolaakun', compact('ndata'));
     }
-    
+
 
     // Membuat Role Admin
     public function register(Request $request)
@@ -83,7 +83,7 @@ class OwnerController extends Controller
             return view('owner.laporan.index');
     }
 
-    
+
 
 
 

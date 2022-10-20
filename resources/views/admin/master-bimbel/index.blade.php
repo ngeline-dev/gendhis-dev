@@ -31,11 +31,11 @@
                                 <td>{{ $ndata->jadwal_bimbel }} | {{ $ndata->waktu_bimbel }}</td>
                                 <td>{{ $ndata->harga_paket }}</td>
                                 <td><a href="{{ route('master-bimbel.edit', ['master_bimbel' => $ndata->id]) }}"
-                                        class="btn icon icon-left btn-warning"
-                                        onclick="return confirm('Apakah Kamu yakin ?')"><i data-feather="trash"></i>
+                                        class="btn icon icon-left btn-warning"><i data-feather="edit"></i>
                                         Edit Data</a></td>
                                 <td><a href="{{ route('master-bimbel.destroy', ['master_bimbel' => $ndata->id]) }}"
-                                        class="btn icon icon-left btn-danger" role="button"><i data-feather="download"></i>
+                                        onclick="return confirm('Apakah Kamu yakin ?')"
+                                        class="btn icon icon-left btn-danger" role="button"><i data-feather="trash"></i>
                                         Delete Data</a></td>
                             </tr>
                         @endforeach

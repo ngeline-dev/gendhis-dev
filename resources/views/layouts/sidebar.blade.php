@@ -59,17 +59,16 @@
                             </li>
                         </ul>
                     </li>
+                @endif
 
+                {{-- MENU KHUSUS OWNER --}}
+                @if (Auth::user()->role == 'Owner')
                     <li class="sidebar-item">
                         <a href="" class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>
                             <span>Kelola Akun</span>
                         </a>
                     </li>
-                @endif
-
-                {{-- MENU KHUSUS OWNER --}}
-                @if (Auth::user()->role == 'Owner')
                     <li class="sidebar-item">
                         <a href="" class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>
