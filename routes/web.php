@@ -84,8 +84,12 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     });
+
     /* Customer */
     Route::group(['middleware' => 'CheckRole:Customer'], function(){
+        /* Dashboard Customer */
+        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
+
         /* List Paket */
         Route::get('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket.travel');
         Route::get('/list-paket-bimbel', [ListPaketController::class, 'ListBimbel'])->name('list-paket.bimbel');
@@ -99,13 +103,11 @@ Route::group(['middleware' => 'auth'], function(){
         /* Transaksi */
         Route::get('/form-pembayaran/{id}', [TransaksiController::class, 'FormPembayaran'])->name('form.pembayaran');
         Route::post('/form-pembayaran/{id}', [TransaksiController::class, 'StorePembayaran'])->name('store.pembayaran');
+        Route::get('/cetak-nota-bayar/{id}/{kategori}', [TransaksiController::class, 'CetakNota'])->name('cetak.nota');
 
-         /* Profile */
-         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-         Route::post('/profile',  [ProfileController::class, 'update']);
-
-         /* after Login */
-        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
+        /* Profile */
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::post('/profile',  [ProfileController::class, 'update']);
 
     });
 
@@ -122,6 +124,20 @@ Route::group(['middleware' => 'auth'], function(){
 
     /* Owner & Admin */
     Route::group(['middleware' => 'CheckRole:Owner,Admin'], function(){
+        /* Owner & admin */
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        /* Laporan Travel */
+        Route::get('/laporan-travel', [TransaksiController::class, 'LaporanTravel'])->name('laporan.travel');
+        Route::post('/laporan-travel', [TransaksiController::class, 'CetakLaporanTravel'])->name('cetak-laporan.travel');
+
+        /* Laporan Bimbel */
+        Route::get('/laporan-bimbel', [TransaksiController::class, 'LaporanBimbel'])->name('laporan.bimbel');
+        Route::post('/laporan-bimbel', [TransaksiController::class, 'CetakLaporanBimbel'])->name('cetak-laporan.bimbel');
+
+        /* Laporan Jasa Foto */
+        Route::get('/laporan-jasa-foto', [TransaksiController::class, 'LaporanJasaFoto'])->name('laporan.foto');
+        Route::post('/laporan-jasa-foto', [TransaksiController::class, 'CetakLaporanJasaFoto'])->name('cetak-laporan.foto');
     });
+
 });

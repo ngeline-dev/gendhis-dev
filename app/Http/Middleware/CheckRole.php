@@ -18,6 +18,8 @@ class CheckRole
     {
         if (in_array($request->user()->role,$roles)) {
             return $next($request);
+        } else {
+            return redirect()->back();
         }
     }
 }

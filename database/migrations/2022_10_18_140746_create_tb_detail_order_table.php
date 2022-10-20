@@ -18,7 +18,7 @@ class CreateTbDetailOrderTable extends Migration
             $table->integer('order_id');
             $table->string('nama_pemesan');
             $table->string('nomor_telepon_pemesan');
-            $table->string('nomor_ktp_pemesan');
+            $table->string('nomor_ktp_pemesan')->nullable();
             $table->string('bi_nama_anak')->nullable();
             $table->string('bi_usia_anak')->nullable();
             $table->date('ft_tanggal_pemesanan')->nullable();

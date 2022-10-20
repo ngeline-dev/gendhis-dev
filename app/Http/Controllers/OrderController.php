@@ -21,6 +21,7 @@ class OrderController extends Controller
     public function StoreOrder(Request $request, $id)
     {
         $dataProduk = ProdukModel::where('id', $id)->first();
+        $now = \Carbon\Carbon::now()->subDays('1')->format('Y-m-d');
 
         switch ($dataProduk->kategori) {
             case 'Travel':
@@ -35,7 +36,7 @@ class OrderController extends Controller
                 $rules = [
                     'nama' => ['required'],
                     'telepon' => ['required'],
-                    'ktp' => ['required', 'min:16'],
+                    // 'ktp' => ['required', 'min:16'],
                     'anak' => ['required'],
                     'usia' => ['required'],
                 ];
@@ -46,7 +47,7 @@ class OrderController extends Controller
                     'nama' => ['required'],
                     'telepon' => ['required'],
                     'ktp' => ['required', 'min:16'],
-                    'tanggal' => ['required'],
+                    'tanggal' => ['required','after:'.$now],
                     'alamat' => ['required'],
                 ];
                 break;
@@ -105,7 +106,7 @@ class OrderController extends Controller
 
     public function HistoryOrder()
     {
-        $data = OrderModel::with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getProdukFromOrder.getBimbelFromProduk','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
+        $data = OrderModel::where('users_id', Auth::user()->id)->with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getProdukFromOrder.getBimbelFromProduk','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
         return view('user.order.show', compact('data'));
     }
 
