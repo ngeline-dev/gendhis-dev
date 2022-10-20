@@ -26,7 +26,7 @@ class AuthController extends Controller
                 if ($userRole != 'Customer') {
                     return redirect()->route('dashboard');
                 } else {
-                    return redirect()->route('landingpage');
+                    return redirect()->route('beranda');
                 }
             } else {
                 Auth::logout();
