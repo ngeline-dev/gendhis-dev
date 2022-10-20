@@ -78,7 +78,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a class="nav-link" href="{{ url('history-order') }}">Pemesanan</a>
+                            {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Pesanan
                             </a>
@@ -92,7 +93,7 @@
                                 Riwayat Pesanan
                                 </a>
 
-                            </div>
+                            </div> --}}
                         </li>
 
                         <li class="nav-item">
