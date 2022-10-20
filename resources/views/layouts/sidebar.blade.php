@@ -83,13 +83,13 @@
                         <span>Laporan Transaksi</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ Request::is('laporan-travel') ? 'active' : '' }}">
                             <a href="{{ route('laporan.travel') }}">Laporan Travel</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ Request::is('laporan-bimbel') ? 'active' : '' }}">
                             <a href="{{ route('laporan.bimbel') }}">Laporan Bimbel</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ Request::is('laporan-jasa-foto') ? 'active' : '' }}">
                             <a href="{{ route('laporan.foto') }}">Laporan Studio Foto</a>
                         </li>
                     </ul>
