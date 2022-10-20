@@ -219,7 +219,7 @@
         <h2>INFORMASI PELAYANAN OFFLINE</h2>
         <div class="services-cards">
             <div class="services-card">
-                <img src="{{ asset('assets') }}/tema/assets/img/layananservis.jpg" alt="">
+                <img src="{{ asset('assets') }}/tema/assets/img/pelayanan.jpg" alt="">
                 <div class="text">
                     <h3>Pelayanan</h3>
                     <span>CV. Gendhis</span>
