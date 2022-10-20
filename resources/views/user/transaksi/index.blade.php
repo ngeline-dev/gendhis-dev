@@ -1,6 +1,22 @@
-<html>
+@extends('layouts.appcust')
+@section('content')
+<br><br><br><br>
 
-<body>
+<!-- CONTENT =============================-->
+<section class="item content">
+	<div class="container toparea">
+		<div class="underlined-title">
+			<div class="editContent">
+				<h1 class="text-center latestitems" style="font-size: 18px;">Silahkan isi form dibawah ini :)</h1>
+			</div>
+			<div class="wow-hr type_short">
+				<span class="wow-hr-h">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</span>
+			</div>
+		</div>
     <div class="row">
         Bayar Ke NoRek CV Gendhis XXXXXXX-XXXXXXXX-XXXXXXXX
     </div>
@@ -98,6 +114,9 @@
             </div>
         </div>
     </form>
-</body>
-
-</html>
+    </div>
+	</div>
+	</div>
+	</div>
+</section><br><br>
+@endsection

@@ -3,27 +3,24 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+    <title>CV. Gendhis</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="{{ url('assets/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('assets/favicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>{{ config('', 'Bengkel Mobil Delta') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+
+
+
     <script src="https://kit.fontawesome.com/a87e9d7c5f.js" crossorigin="anonymous"></script>
 
 
@@ -42,9 +39,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img src="{{ url('images/favicon.png') }}" height="45" width="105">
+                <a class="navbar-brand" href="{{ route ('user.beranda')}}">
+                    <img src="{{ url('assets/favicon.png') }}" height="55" width="55">
                 </a>
+                <h3>CV. Gendhis</h3>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -56,34 +54,49 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/home">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('sparepart') }}">Suku Cadang</a>
+                            <a class="nav-link" href="{{ route ('user.beranda')}}">Beranda</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Servis
+                                Paket
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="{{ url('history') }}">
-                                    Servis
+                                <a class="dropdown-item" href="{{ url('list-paket-travel') }}">
+                                Travel
+                                </a>
+                                <a class="dropdown-item" href="{{ url('list-paket-bimbel') }}">
+                                Bimbel
+                                </a>
+                                <a class="dropdown-item" href="{{ url('list-paket-jasa-foto') }}">
+                                Studio Foto
+                                </a>
+
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Pesanan
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ url('history-order') }}">
+                                Pesanan
                                 </a>
                                 <a class="dropdown-item" href="{{ url('serviceHistory') }}">
-                                    Riwayat Servis
-                                </a>
-                                <a class="dropdown-item" href="{{ url('customerService') }}">
-                                    Layanan Gratis Servis
+                                Riwayat Pesanan
                                 </a>
 
                             </div>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">Tentang Bengkel</a>
+                            <a class="nav-link" href="/about">Tentang Gendhis</a>
                         </li>
                     </ul>
 
@@ -100,17 +113,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img class="img-profile rounded-circle" style="width:30px;height:30px;"
-                                        src="{{ asset('images/notification.png') }}">
-                                    <span class="badge" style="background-color: 	#ff0000;"></span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" id="notifikasi"
-                                    aria-labelledby="navbarDropdown">
-                                </div>
-                            </li>
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -132,7 +134,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form" action="{{ route('logout') }}" method="get"
                                         class="d-none">
                                         @csrf
                                     </form>
@@ -153,16 +155,6 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="footernote">
-                        Media Sosial Bengkel Delta
-                    </p>
-                    <p>
-                        <a href="https://api.whatsapp.com/send?phone=6282330125253&text=Halo%20Admin%20Bengkel Mobil Delta,%20Saya%20ingin%20bertanya.%20Tolong%20bantu%20Saya.%20"
-                            class="social-item"><span class="fab fa-whatsapp"></span></a>
-                        <a href="#" class="social-item"><span class="fab fa-facebook"></span></a>
-                        <a href="https://www.instagram.com/deltaynadi_/" class="social-item"><span
-                                class="fab fa-instagram"></span></a>
-                    </p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;
                     <script>
@@ -175,6 +167,18 @@
                 </div>
             </div>
     </footer>
+    <script src="{{ asset('assets') }}/tema/assets/js/script.js"></script>
+    <script src="{{ asset('assets') }}/tema/assets/js/particles.js"></script>
+    <script src="{{ asset('assets') }}/tema/assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
     <script src="js/jquery-.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/anim.js"></script>

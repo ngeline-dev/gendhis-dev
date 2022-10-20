@@ -3,7 +3,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">
-                    <h3>GENDHIS</h3>
+                    <h3>CV. GENDHIS</h3>
                 </li>
 
                 <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }}">

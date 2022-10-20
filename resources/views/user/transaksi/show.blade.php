@@ -4,7 +4,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3>Pesanan</h3>
+                <h3>Riwayat Pesanan</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">

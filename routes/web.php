@@ -100,6 +100,13 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/form-pembayaran/{id}', [TransaksiController::class, 'FormPembayaran'])->name('form.pembayaran');
         Route::post('/form-pembayaran/{id}', [TransaksiController::class, 'StorePembayaran'])->name('store.pembayaran');
 
+         /* Profile */
+         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+         Route::post('/profile',  [ProfileController::class, 'update']);
+
+         /* after Login */
+        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
+
     });
 
     /* Owner */
@@ -116,9 +123,5 @@ Route::group(['middleware' => 'auth'], function(){
     /* Owner & Admin */
     Route::group(['middleware' => 'CheckRole:Owner,Admin'], function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    });
-
-    Route::group(['middleware' => 'CheckRole:Customer'], function(){
-        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
     });
 });
