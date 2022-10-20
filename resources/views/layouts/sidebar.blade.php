@@ -15,6 +15,13 @@
 
                 {{-- MENU KHUSUS ADMIN --}}
                 @if (Auth::user()->role == 'Admin')
+
+                    <li class="sidebar-item">
+                        <a href="" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Kelola Akun</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item has-sub">
                         <a href="#" class="sidebar-link">
                             <i class="bi bi-file-earmark-spreadsheet-fill"></i>
@@ -59,20 +66,17 @@
                             </li>
                         </ul>
                     </li>
+
+                    
                 @endif
 
                 {{-- MENU KHUSUS OWNER --}}
                 @if (Auth::user()->role == 'Owner')
+
                     <li class="sidebar-item">
-                        <a href="" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Kelola Akun</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
-                            <span>isine list menu owner</span>
+                        <a href="{{ route('master-kelolaadmin.index') }}" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Keloa Akun Admin</span>
                         </a>
                     </li>
                 @endif
@@ -83,13 +87,13 @@
                         <span>Laporan Transaksi</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item {{ Request::is('laporan-travel') ? 'active' : '' }}">
+                        <li class="submenu-item">
                             <a href="{{ route('laporan.travel') }}">Laporan Travel</a>
                         </li>
-                        <li class="submenu-item {{ Request::is('laporan-bimbel') ? 'active' : '' }}">
+                        <li class="submenu-item">
                             <a href="{{ route('laporan.bimbel') }}">Laporan Bimbel</a>
                         </li>
-                        <li class="submenu-item {{ Request::is('laporan-jasa-foto') ? 'active' : '' }}">
+                        <li class="submenu-item">
                             <a href="{{ route('laporan.foto') }}">Laporan Studio Foto</a>
                         </li>
                     </ul>
