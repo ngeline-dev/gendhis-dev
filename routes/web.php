@@ -26,7 +26,7 @@ use App\Http\Controllers\OwnerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 // Auth::routes();
@@ -68,6 +68,21 @@ Route::group(['middleware' => 'auth'], function(){
         ]]);
         Route::post('/master-jasa-foto/{master_jasa_foto}', [MasterJasaFotoController::class, 'update'])->name('master-jasa-foto.update');
         Route::get('/master-jasa-foto/{master_jasa_foto}', [MasterJasaFotoController::class, 'destroy'])->name('master-jasa-foto.destroy');
+
+        /* List Order Travel */
+        Route::get('/list-order-travel', [OrderController::class, 'ListOrderTravel'])->name('list-order.travel');
+
+        /* List Order Bimbel */
+        Route::get('/list-order-bimbel', [OrderController::class, 'ListOrderBimbel'])->name('list-order.bimbel');
+
+        /* List Order Jasa Foto */
+        Route::get('/list-order-jasa-foto', [OrderController::class, 'ListOrderJasaFoto'])->name('list-order.foto');
+
+        /* Konfirmasi */
+        Route::post('/konfirmasi-order/{id}', [OrderController::class, 'KonfirmasiOrder'])->name('order.konfirmasi');
+        Route::post('/konfirmasi-pembayaran/{id}', [OrderController::class, 'KonfirmasiPembayaran'])->name('pembayaran.konfirmasi');
+
+
     });
     /* Customer */
     Route::group(['middleware' => 'CheckRole:Customer'], function(){

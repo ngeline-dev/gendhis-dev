@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProdukModel;
 use App\Models\OrderModel;
 use App\Models\DetailOrderModel;
+use App\Models\TransaksiModel;
 use Validator, Auth, Alert;
 
 class OrderController extends Controller
@@ -106,5 +107,132 @@ class OrderController extends Controller
     {
         $data = OrderModel::with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getProdukFromOrder.getBimbelFromProduk','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
         return view('user.order.show', compact('data'));
+    }
+
+    public function ListOrderTravel()
+    {
+        $getProduk = ProdukModel::where('kategori', 'Travel')->pluck('id')->toArray();
+
+        $data = OrderModel::whereIn('produk_id', $getProduk)
+            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getTransaksiFromOrder'])->get();
+        return view('admin.list-order-travel.index', compact('data'));
+    }
+
+    public function ListOrderBimbel()
+    {
+        $getProduk = ProdukModel::where('kategori', 'Bimbel')->pluck('id')->toArray();
+
+        $data = OrderModel::whereIn('produk_id', $getProduk)
+            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getBimbelFromProduk','getTransaksiFromOrder'])->get();
+        return view('admin.list-order-bimbel.index', compact('data'));
+    }
+
+    public function ListOrderJasaFoto()
+    {
+        $getProduk = ProdukModel::where('kategori', 'Foto')->pluck('id')->toArray();
+
+        $data = OrderModel::whereIn('produk_id', $getProduk)
+            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
+        return view('admin.list-order-jasa-foto.index', compact('data'));
+    }
+
+    public function KonfirmasiOrder(Request $request, $id)
+    {
+        if ($request->status == 'Dibatalkan') {
+            $rules = [
+                'status' => ['required'],
+                'alasan' => ['required'],
+            ];
+        } else {
+            $rules = [
+                'status' => ['required'],
+            ];
+        }
+
+        $messages = [];
+
+        $attributes = [
+            'status' => 'Status Pemesanan',
+            'alasan' => 'Alasan Dibatalkan',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+        if(!$validator->passes()){
+            Alert::error('Terjadi Kesalahan');
+            return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
+        } else {
+            OrderModel::where('id', $id)->update([
+                'status' => $request->status,
+                'alasan_pembatalan' => $request->alasan,
+                'admin_id' => Auth::user()->id
+            ]);
+
+            Alert::success('Berhasil Melakukan Konfirmasi Pemesanan');
+
+            switch ($request->kategori) {
+                case 'Travel':
+                    return redirect()->route('list-order.travel');
+                    break;
+
+                case 'Bimbel':
+                    return redirect()->route('list-order.bimbel');
+                    break;
+
+                default:
+                    return redirect()->route('list-order.foto');
+                    break;
+            }
+        }
+    }
+
+    public function KonfirmasiPembayaran(Request $request, $id)
+    {
+        if ($request->status == 'Dibatalkan') {
+            $rules = [
+                'status' => ['required'],
+                'alasan' => ['required'],
+            ];
+        } else {
+            $rules = [
+                'status' => ['required'],
+            ];
+        }
+
+        $messages = [];
+
+        $attributes = [
+            'status' => 'Status Pembayaran',
+            'alasan' => 'Alasan Dibatalkan',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
+
+        if(!$validator->passes()){
+            Alert::error('Terjadi Kesalahan');
+            return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
+        } else {
+            TransaksiModel::where('order_id', $id)->update([
+                'status' => $request->status,
+                'alasan_pembatalan' => $request->alasan,
+                'admin_id' => Auth::user()->id
+            ]);
+
+            Alert::success('Berhasil Melakukan Konfirmasi Pembayaran');
+
+            switch ($request->kategori) {
+                case 'Travel':
+                    return redirect()->route('list-order.travel');
+                    break;
+
+                case 'Bimbel':
+                    return redirect()->route('list-order.bimbel');
+                    break;
+
+                default:
+                    return redirect()->route('list-order.foto');
+                    break;
+            }
+        }
     }
 }
