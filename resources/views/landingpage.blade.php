@@ -133,11 +133,7 @@
     <section class="about" id="about">
         <div class="deskripsi">
             <h2>Tentang CV. Gendhis</h2>
-            <p>Incididunt incididunt eiusmod cupidatat qui ipsum Lorem quis qui. Magna reprehenderit enim cupidatat qui
-                minim. Enim officia enim incididunt quis sit duis reprehenderit labore do. Eiusmod pariatur pariatur
-                amet esse fugiat exercitation aute do reprehenderit sint. Exercitation est minim adipisicing irure
-                consequat fugiat. Mollit exercitation sunt reprehenderit ex aliquip deserunt.</p>
-            <p>Eu amet magna tempor aliqua ipsum aliqua.</p>
+            <p>CV. Gendhis adalah perusahaan yang bergerak di bidang Travel Agent, Edukasi dan Photografi. CV. Gendhis sudah berjalan hampir dua tahun dan berlokasi di Pesantren Kota Kediri.</p>
             <a href="/register">
                 <button>COBA SEKARANG</button>
             </a>
@@ -161,8 +157,7 @@
                         height="240">
                     <div class="card-body">
                         <h5 class="card-title">Gendhis Travel</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Kebahagiaan di tengah keluarga Tercinta Nikmatilah setiap perjalanan yang kamu nikmati Liburan santai dan promo pada bulan ini Manja dan penuh cinta bersama kerabat Petualangan dan liburan yang panjang Sensasi Liburan yang Menyenangkan.</p>
                     </div>
                 </a>
 
@@ -173,8 +168,7 @@
                         height="240">
                     <div class="card-body">
                         <h5 class="card-title">Gendhis Sinau</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                            content.
+                        <p class="card-text">Mengenal huruf dan angka, mengeja, membaca dan menghitung. Menyiapkan untuk pendidikan menengah Bekal UTS, UAS dan Ujian Akhir Menyiapkan bekal pendidikan Tingkat LANJUT Penyelesaian Tugas Akhir.
                         </p>
                     </div>
                 </a>
@@ -184,10 +178,7 @@
                     <img class="card-img-top" src="{{ asset('assets/fotografer.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Gendhis Jasa Fotografer</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to show that equal
-                            height
-                            action.</p>
+                        <p class="card-text">Abadikan Momen Pre Wedding Anda Abadikan Kasih Sayang dan kebahagiaan anda Profil dan Produk Abadikan Momen Liburan Kamu.</p>
                     </div>
                 </a>
             </div>
@@ -201,33 +192,25 @@
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/timwork.png" alt="">
                 <center>
                     <h3>Manajemen Tim</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed quis eaque molestiae doloremque
-                        voluptate excepturi, error recusandae enim odit aut numquam, dolore maxime iure fugit officiis
-                        quos aliquid. Consequatur, accusamus?</p>
+                    <p>Tim kami sangat profesional dalam memanajemen Data yang telah masuk. Sehingga memudahkan Anda untuk melakukan pesanan secara Online ataupun Offline</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/management.png" alt="">
                 <center>
                     <h3>Manajemen Booking</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed earum eum eveniet aliquid
-                        asperiores quae, quam adipisci in quasi quos libero delectus optio porro a ab provident, facilis
-                        vitae?</p>
+                    <p>Pada Manajemen Booking CV.GENDHIS sudah dipantau oleh Admin. Untuk pemensanan tidak usah diragukan lagi karena manajemen kami sudah handal</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/inovasi.png" alt="">
                 <center>
                     <h3>Inovasi</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam sit culpa ullam officia, iste
-                        dolorem beatae tenetur dolores veniam quae deleniti doloremque dolor. Non nobis animi
-                        consequatur mollitia fuga a?</p>
+                    <p>Kami akan terus berinovasi dalam berbisnis. Karena persaingan bisnis sekarang sangat ketat. Maka dari itu CV.GENDHIS akan terus berinovai agar pelanggan Senang</p>
             </div>
             <div class="services-card">
                 <img src="{{ asset('assets') }}/tema/assets/img/icon/puas.png" alt="">
                 <center>
                     <h3>Pelayanan</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum sint officiis provident animi
-                        iusto. Quos, corrupti? Quod, reiciendis quam temporibus iste explicabo ea assumenda sed quidem
-                        ipsam sequi accusantium autem.</p>
+                    <p>Pelayanan pada CV.GENDHIS adalah nomor SATU. Sehingga pelanggan akan merasa puas dengan perlakuan ekstra. Pelanggan akan merasakan perbedaan pelayanan dengan yang lain.</p>
             </div>
         </div>
     </section>
@@ -240,9 +223,7 @@
                 <div class="text">
                     <h3>Pelayanan</h3>
                     <span>CV. Gendhis</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore sit recusandae iste quisquam
-                        eaque enim nemo molestiae, nisi animi nostrum asperiores alias incidunt ex ipsa consectetur vero
-                        obcaecati doloribus? Dolore?</p>
+                    <p>Pelayanan kami unggulkan, karena kepuasan pelanggan adalah tujuan kami. Anda akan menikmati pelayanan yang berbeda dari lain.</p>
                     <hr>
                     <a href="">Learn More</a>
                 </div>
@@ -252,9 +233,7 @@
                 <div class="text">
                     <h3>Paket</h3>
                     <span>CV. Gendhis</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae impedit id labore, culpa quidem
-                        aliquam natus aliquid magni facere aut ea hic minima incidunt praesentium, soluta sit,
-                        architecto provident! Ipsa!</p>
+                    <p>Paket disini akan ter-Update, Kami selalu update paket Travel, Bimbel dan Jasa Foto. Kami tidak kalah dengan yang lain.</p>
                     <hr>
                     <a href="#">Learn More</a>
                 </div>
@@ -264,9 +243,7 @@
                 <div class="text">
                     <h3>Lokasi & Jam Buka</h3>
                     <span>CV. Gendhis</span>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor sequi consequuntur doloribus
-                        quaerat minima tenetur aspernatur nulla, nihil id at, esse excepturi perferendis quos ratione
-                        numquam! Soluta vel voluptas qui!</p>
+                    <p>Lokasi Kami sangat strategis yaitu di Pesantren Kota Kediri, Untuk jam buka kami yaitu Pukul 09.00 sampai 16.00 WIB</p>
                     <hr>
                     <a href="https://goo.gl/maps/Hvcpt6SvgXr7Gx97A">Maps CV. Gendhis</a>
                 </div>
@@ -290,7 +267,7 @@
             <h3>Hubungi Kami</h3>
             <ul>
                 <li>cv.gendhis@gmail.com</li>
-                <li>0852-3577-2231</li>
+                <li><a href="https://wa.me/6285331436287">Contact Us</a></li>
                 <li>Jl. Bence Gang 1,
                     Pakunden, Kec. Pesantren, Kota Kediri, Jawa Timur 64132.</li>
             </ul>
