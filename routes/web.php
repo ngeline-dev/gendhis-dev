@@ -114,12 +114,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     /* Owner */
     Route::group(['middleware' => 'CheckRole:Owner'], function(){
-        Route::get('/kelolaakun', [OwnerController::class, 'kelolaakun'])->name('o.kelolaakun');
-        Route::post('/kelolaakun', [OwnerController::class, 'kelolaakun'])->name('o.managerSearch');
-        Route::post('/store/admin', [OwnerController::class, 'register'])->name('o.user.store');
-        Route::get('/kelolaakun/{id}', [OwnerController::class, 'edit'])->name('o.adminEdit');
-        Route::post('/update', [OwnerController::class, 'update'])->name('o.adminUpdate');
-        Route::get('/delete/{id}', [OwnerController::class, 'destroy'])->name('o.adminDelete');
+        /* Master Kelola Admin */
+        Route::resource('master-kelolaadmin', OwnerController::class, ['except' => [
+            'update', 'destroy'
+        ]]);
+        Route::post('/master-kelolaadmin/{master_kelolaadmin}', [OwnerController::class, 'update'])->name('master-kelolaadmin.update');
+        Route::get('/master-kelolaadmin/{master_kelolaadmin}', [OwnerController::class, 'destroy'])->name('master-kelolaadmin.destroy');
 
     });
 
