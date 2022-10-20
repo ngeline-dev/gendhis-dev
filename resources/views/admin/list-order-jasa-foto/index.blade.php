@@ -81,22 +81,144 @@
                     @if ($ndata->status == 'Diterima')
                         {{-- Jika Transaksi Ada --}}
                         @if ($ndata->getTransaksiFromOrder)
-                            <a href="#">Detail Pemesanan</a>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                 data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                 data-target="#pembayaran{{ $ndata->id }}">Konfirmasi Pembayaran</button>
                         @else
-                            <a href="#">Detail Pemesanan</a>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                 data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
                         @endif
                     @else
-                        <a href="#">Detail Pemesanan</a>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                             data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
                     @endif
                 </td>
+
+                <!-- Modal Detail Pemesanan -->
+                <div id="detail{{ $ndata->id }}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Detail Pemesanan</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Detail Paket</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="">Kategori Paket</label>
+                                        <input type="text" value="{{ $ndata->getProdukFromOrder->kategori }}"
+                                            readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Nama Paket</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h4>Detail Pemesanan</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="">Nama Pemesan</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}" readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Nomor KTP</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getDetailOrderFromOrder->nomor_ktp_pemesan }}" readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Nomor Telepon</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getDetailOrderFromOrder->nomor_telepon_pemesan }}"
+                                            readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Tanggal Pemesanan</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getDetailOrderFromOrder->ft_tanggal_pemesanan }}"
+                                            readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Alamat Pemesanan</label>
+                                        <input type="text"
+                                            value="{{ $ndata->getDetailOrderFromOrder->ft_alamat_pemesanan }}"
+                                            readonly>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">Status Pemesanan</label>
+                                        @if ($ndata->status == 'Dibatalkan')
+                                            <input type="text"
+                                                value="{{ $ndata->status }} - {{ $ndata->alasan_pembatalan }}"
+                                                readonly>
+                                        @else
+                                            <input type="text" value="{{ $ndata->status }}" readonly>
+                                        @endif
+                                    </div>
+                                </div>
+                                @if ($ndata->getTransaksiFromOrder)
+                                    <hr>
+                                    <h4>Detail Transaksi</h4>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="">Jenis Pembayaran</label>
+                                            <input type="text"
+                                                value="{{ $ndata->getTransaksiFromOrder->jenis_pembayaran }}" readonly>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Nama Bank</label>
+                                            <input type="text" value="{{ $ndata->getTransaksiFromOrder->bank }}"
+                                                readonly>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="">Nama Rekening</label>
+                                            <input type="text"
+                                                value="{{ $ndata->getTransaksiFromOrder->namaRek }}" readonly>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="">Total Pembayaran</label>
+                                            <input type="text"
+                                                value="{{ $ndata->getTransaksiFromOrder->total_pembayaran }}"
+                                                readonly>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="">Status Pembayaran</label>
+                                            @if ($ndata->getTransaksiFromOrder->status == 'Dibatalkan')
+                                                <input type="text"
+                                                    value="{{ $ndata->getTransaksiFromOrder->status }} - {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}"
+                                                    readonly>
+                                            @else
+                                                <input type="text"
+                                                    value="{{ $ndata->getTransaksiFromOrder->status }}" readonly>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label for="">Bukti Pembayaran</label>
+                                            <img src="/assets/img/bukti/{{ $ndata->getTransaksiFromOrder->bukti_pembayaran }}"
+                                                width="100" height="100">
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <!-- Modal -->
                 <div id="pemesanan{{ $ndata->id }}" class="modal fade" role="dialog">
@@ -147,7 +269,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">Close</button>
                                     <input type="submit" value="Simpan">
                                 </div>
                             </form>
