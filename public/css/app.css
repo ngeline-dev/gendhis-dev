@@ -2666,37 +2666,37 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #435ebe;
+  border-color: #435ebe;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #435ebe;
+  border-color: #435ebe;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #435ebe;
+  border-color: #435ebe;
   box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #fff;
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #435ebe;
+  border-color: #435ebe;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #435ebe;
+  border-color: #435ebe;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -3586,7 +3586,7 @@ input[type=button].btn-block {
 .dropdown-item:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #8B0000;
+  background-color: #435ebe;
   
   font-weight: bold;
   font-size: 1.2rem;
@@ -3596,7 +3596,7 @@ input[type=button].btn-block {
 .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #8B0000;
+  background-color: #435ebe;
 }
 
 .dropdown-item.disabled,
