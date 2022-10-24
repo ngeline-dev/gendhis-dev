@@ -35,7 +35,7 @@
 					<span class="numberstep"><i class="far fa-laugh-beam"></i></span>
 					<h3 class="numbertext">KEPUASAN TERJAMIN</h3>
 					<p>
-						Setelah selesai servis tentunya mobil anda akan semakin nyaman dan membuat perjalanan anda semakin nyaman.
+						Deskripsi.
 					</p>
 				</div>
 				<!-- /.col-md-4 -->
@@ -46,7 +46,7 @@
 					<span class="numberstep"><i class="far fa-calendar-alt"></i></i></span>
 					<h3 class="numbertext">JAM OPERASIONAL</h3>
 					<p>
-						Jam operasional bengkel mobil delta adalah Senin-Sabtu dari jam 8 pagi - 3 sore dan tutup setiap hari Minggu.
+                    Deskripsi.
 					</p>
 				</div>
 				<!-- /.col -->
@@ -57,7 +57,7 @@
 					<span class="numberstep"><i class="fas fa-tags"></i></i></span>
 					<h3 class="numbertext">PROMO</h3>
 					<p>
-						Setiap servis mobil di bengkel kami sebanyak 10 kali akan mendapatkan promo terbaik.
+                    Deskripsi.
 					</p>
 				</div>
 			</div>
