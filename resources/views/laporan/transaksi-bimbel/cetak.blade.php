@@ -21,7 +21,9 @@
                 <td>{{ $ndata->getOrderFromTransaksi->getDetailOrderFromOrder->nama_pemesan }}</td>
                 <td>{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getBimbelFromProduk->nama_paket }}</td>
                 <td>{{ $ndata->created_at }}</td>
-                <td>{{ $ndata->total_pembayaran }}</td>
+                <td>
+                    Rp {{ number_format($ndata->total_pembayaran, 2, ',', '.') }}
+                </td>
 
                 @php
                     $sum += $ndata->total_pembayaran;
@@ -30,7 +32,9 @@
         </tbody>
         <tfoot>
             <td>Total</td>
-            <td>Rp. {{ $sum }}</td>
+            <td>
+                Rp {{ number_format($sum, 2, ',', '.') }}
+            </td>
         </tfoot>
         </thead>
     </table>
