@@ -14,6 +14,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ListCustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +92,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/konfirmasi-order/{id}', [OrderController::class, 'KonfirmasiOrder'])->name('order.konfirmasi');
         Route::post('/konfirmasi-pembayaran/{id}', [OrderController::class, 'KonfirmasiPembayaran'])->name('pembayaran.konfirmasi');
 
-
+        /* List Customer */
+        Route::get('/list-customer', [ListCustomerController::class, 'ListCustomer'])->name('list.customer');
     });
 
     /* Customer */

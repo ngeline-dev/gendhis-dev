@@ -15,11 +15,10 @@
 
                 {{-- MENU KHUSUS ADMIN --}}
                 @if (Auth::user()->role == 'Admin')
-
                     <li class="sidebar-item">
-                        <a href="" class="sidebar-link">
+                        <a href="{{ route('list.customer') }}" class="sidebar-link">
                             <i class="bi bi-people-fill"></i>
-                            <span>Kelola Akun</span>
+                            <span>List Customer</span>
                         </a>
                     </li>
                     <li class="sidebar-item has-sub">
@@ -66,13 +65,10 @@
                             </li>
                         </ul>
                     </li>
-
-                    
                 @endif
 
                 {{-- MENU KHUSUS OWNER --}}
                 @if (Auth::user()->role == 'Owner')
-
                     <li class="sidebar-item">
                         <a href="{{ route('master-kelolaadmin.index') }}" class="sidebar-link">
                             <i class="bi bi-people-fill"></i>
