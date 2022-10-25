@@ -28,12 +28,13 @@
 
 
     <!-- Styles -->
-    
+
     <link rel="icon" type="image/png" href="{!! asset('images/favicon.png') !!}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/main.css') !!}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
 </head>
 
@@ -41,7 +42,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route ('user.beranda')}}">
+                <a class="navbar-brand" href="{{ route('user.beranda') }}">
                     <img src="{{ url('assets/favicon.png') }}" height="55" width="55">
                 </a>
                 <h3>CV. Gendhis</h3>
@@ -56,7 +57,7 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route ('user.beranda')}}">Beranda</a>
+                            <a class="nav-link" href="{{ route('user.beranda') }}">Beranda</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -67,21 +68,22 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ url('list-paket-travel') }}">
-                                Travel
+                                    Travel
                                 </a>
                                 <a class="dropdown-item" href="{{ url('list-paket-bimbel') }}">
-                                Bimbel
+                                    Bimbel
                                 </a>
                                 <a class="dropdown-item" href="{{ url('list-paket-jasa-foto') }}">
-                                Studio Foto
+                                    Studio Foto
                                 </a>
 
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ url('history-order') }}">Pemesanan</a>
-                            {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ url('history-order') }}">Pemesanan</a>
+                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Pesanan
                             </a>
@@ -96,7 +98,8 @@
                                 </a>
 
                             </div> --}}
-                        </li>
+                            </li>
+                        @endauth
 
                         <li class="nav-item">
                             <a class="nav-link" href="/about">Tentang Gendhis</a>
@@ -116,7 +119,6 @@
                                 </li>
                             @endif
                         @else
-
                             <div class="topbar-divider d-none d-sm-block"></div>
 
                             <li class="nav-item dropdown">
@@ -174,7 +176,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/anim.js"></script>
     <script>
-        //----HOVER CAPTION---//	  
+        //----HOVER CAPTION---//
         jQuery(document).ready(function($) {
             $('.fadeshop').hover(
                 function() {
@@ -185,19 +187,19 @@
                 }
             );
 
-            $.get("notifikasi", function(data, status){
-                $.each(data , function( index, value ) {
-                    let button = '<a class="dropdown-item" href="{{ url('customerService') }}" >'+value.keterangan+'</a>';
+            $.get("notifikasi", function(data, status) {
+                $.each(data, function(index, value) {
+                    let button = '<a class="dropdown-item" href="{{ url('customerService') }}" >' +
+                        value.keterangan + '</a>';
                     $('#notifikasi').append(button);
                     console.log(value.keterangan);
                 });
-                
-                
-                
+
+
+
             });
 
         });
-        
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @include('sweetalert::alert')

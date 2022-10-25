@@ -27,7 +27,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', function () {
-    return view('landingpage');
+    return view('user.beranda');
 });
 
 // Auth::routes();
@@ -44,6 +44,14 @@ Route::post('/register', [AuthController::class, 'postRegister'])->name('post.lo
 
 /* Logout */
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+/* Dashboard Customer */
+Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
+
+/* List Paket */
+Route::get('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket.travel');
+Route::get('/list-paket-bimbel', [ListPaketController::class, 'ListBimbel'])->name('list-paket.bimbel');
+Route::get('/list-paket-jasa-foto', [ListPaketController::class, 'ListJasaFoto'])->name('list-paket.foto');
 
 /* Middleware && Auth */
 Route::group(['middleware' => 'auth'], function(){
@@ -88,14 +96,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     /* Customer */
     Route::group(['middleware' => 'CheckRole:Customer'], function(){
-        /* Dashboard Customer */
-        Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
-
-        /* List Paket */
-        Route::get('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket.travel');
-        Route::get('/list-paket-bimbel', [ListPaketController::class, 'ListBimbel'])->name('list-paket.bimbel');
-        Route::get('/list-paket-jasa-foto', [ListPaketController::class, 'ListJasaFoto'])->name('list-paket.foto');
-
         /* Order */
         Route::get('/form-order/{id}', [OrderController::class, 'FormOrder'])->name('form.order');
         Route::post('/form-order/{id}', [OrderController::class, 'StoreOrder'])->name('store.order');
