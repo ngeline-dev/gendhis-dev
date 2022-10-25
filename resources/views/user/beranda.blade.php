@@ -26,6 +26,44 @@
         </div>
     </header>
 
+    <br><br><br><br>
+    <div class="item content">
+	<div class="container toparea">
+		<div class="row text-center">
+			<div class="col-md-4">
+				<div class="col editContent">
+					<span class="numberstep"><i class="far fa-laugh-beam"></i></span>
+					<h3 class="numbertext">KEPUASAN TERJAMIN</h3>
+					<p>
+						Deskripsi.
+					</p>
+				</div>
+				<!-- /.col-md-4 -->
+			</div>
+			<!-- /.col-md-4 col -->
+			<div class="col-md-4 editContent">
+				<div class="col">
+					<span class="numberstep"><i class="far fa-calendar-alt"></i></i></span>
+					<h3 class="numbertext">JAM OPERASIONAL</h3>
+					<p>
+                    Deskripsi.
+					</p>
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.col-md-4 col -->
+			<div class="col-md-4 editContent">
+				<div class="col">
+					<span class="numberstep"><i class="fas fa-tags"></i></i></span>
+					<h3 class="numbertext">PROMO</h3>
+					<p>
+                    Deskripsi.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><br><br>
 
     <section class="layanan" id="paket"> 
         <center><h2>PILIH PAKET<h2></center>

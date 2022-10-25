@@ -66,7 +66,7 @@ nav h1{
 }
 
 nav ul li:hover{
-  background-color: 	#B22222;
+  background-color: 	#435ebe;
   width: auto;
   color: white;
   font-weight: bold;
@@ -88,7 +88,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-  color: #B22222;
+  color: #435ebe;
   text-decoration: none;
 }
 
@@ -169,7 +169,6 @@ a:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.8);
 }
 
 .item.header,
@@ -887,7 +886,7 @@ a:active {
 
 .homebrowseitems {
 	text-decoration:none;
-	background-color:	#8B0000;
+	background-color:	#435ebe;
 	font-weight:700;
 	font-size:20px;
 	border:0;
@@ -915,7 +914,7 @@ a.homebrowseitems:hover {
 
 
 .numberstep {
-	background-color:	#8B0000;
+	background-color:	#435ebe;
 	border-radius:50%;
 	color:#fff;
 	margin-right:4px;
@@ -980,7 +979,7 @@ a.homebrowseitems:hover {
 	text-transform:uppercase;
 	border-radius:0;
 	display:block;
-	background:#8B0000;
+	background:#435ebe;
 }
 
 .toparea2 {
@@ -1000,7 +999,7 @@ a.homebrowseitems:hover {
 .rightarea {
   width: 650px;
   height: 500px;
-	background:#8B0000;
+	background:#435ebe;
   position: relative;
 	margin-top:-535px;
   margin-left: 508px;
@@ -1097,7 +1096,7 @@ h1.latestitems {
 	position:absolute;
 	top:0;
 	left:0;
-	background-color:	#8B0000;
+	background-color:	#435ebe;
 	width:100%;
 	height:100%;
 }
@@ -1129,7 +1128,7 @@ h1.latestitems {
 }
 .captionshop a.learn-more:hover {
 	background:#fff;
-	color:	#8B0000;
+	color:	#435ebe;
 	display:inline-block;
 	border:1px solid #fff;
 }
