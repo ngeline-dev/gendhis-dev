@@ -133,6 +133,18 @@ class OrderController extends Controller
         return view('admin.list-order-travel.create', compact('data'));
     }
 
+    public function ListOrderBimbelCreate()
+    {
+        $data = ProdukModel::where('kategori', 'Bimbel')->with(['getBimbelFromProduk'])->get();
+        return view('admin.list-order-bimbel.create', compact('data'));
+    }
+
+    public function ListOrderJasaFotoCreate()
+    {
+        $data = ProdukModel::where('kategori', 'Foto')->with(['getJasaFotoFromProduk'])->get();
+        return view('admin.list-order-jasa-foto.create', compact('data'));
+    }
+
     public function OfflineStore(Request $request)
     {
         $now = \Carbon\Carbon::now()->subDays('1')->format('Y-m-d');
@@ -244,9 +256,22 @@ class OrderController extends Controller
             $transaksi->expired_at = \Carbon\Carbon::now()->subDays(2)->format('Y-m-d H:i:s');
             $transaksi->save();
 
-            Alert::success('Berhasil Melakukan Pemesanan');
+            switch ($request->kategori) {
+                case 'Travel':
+                    Alert::success('Berhasil Melakukan Pemesanan');
+                    return redirect()->route('list-order.travel');
+                    break;
 
-            return redirect()->route('list-order.travel');
+                case 'Bimbel':
+                    Alert::success('Berhasil Melakukan Pemesanan');
+                    return redirect()->route('list-order.bimbel');
+                    break;
+
+                default:
+                    Alert::success('Berhasil Melakukan Pemesanan');
+                    return redirect()->route('list-order.foto');
+                    break;
+            }
         }
     }
 

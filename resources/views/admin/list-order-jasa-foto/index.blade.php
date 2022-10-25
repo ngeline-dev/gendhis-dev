@@ -4,30 +4,11 @@
 @section('page', 'Data Order Jasa Foto')
 @section('content')
     <section class="section">
-        <!-- Modal -->
-        <div id="pembayaran" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Detail Pemesanan</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
         <div class="card">
             <div class="card-header">
             </div>
             <div class="card-body">
+                <a href="{{ route('list-order-create.foto') }}" class="btn btn-primary">Tambah Pemesanan</a>
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -35,7 +16,7 @@
                             <th>Nama Pemesan</th>
                             <th>Nomor Telepon</th>
                             <th>Nama Paket</th>
-                            {{-- <th>Request Jasa Foto</th> --}}
+                            <th>Jenis Transaksi</th>
                             <th>Tanggal Order</th>
                             <th>Status Pemesanan</th>
                             <th>Status Pembayaran</th>
@@ -52,10 +33,9 @@
                                 <td>{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}</td>
                                 <td>{{ $ndata->getDetailOrderFromOrder->nomor_telepon_pemesan }}</td>
                                 <td>{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}</td>
-                                {{-- <td>
-                                    Pada {{ $ndata->getDetailOrderFromOrder->ft_tanggal_pemesanan }}
-                                    di {{ $ndata->getDetailOrderFromOrder->ft_alamat_pemesanan }}
-                                </td> --}}
+                                <td>
+                                    {{ $ndata->getTransaksiFromOrder->jenis_pembayaran }}
+                                </td>
                                 <td>{{ $ndata->created_at }}</td>
                                 <td>
                                     {{-- Jika Status Pemesanan Dibatalkan --}}
@@ -73,14 +53,20 @@
                                             {{ $ndata->getTransaksiFromOrder->status }} -
                                             {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}
                                         @else
-                                            {{ $ndata->getTransaksiFromOrder->status }}
-                                        @endif
-                                    @else
-                                        {{-- Jika Status Pemesanan Diterima --}}
-                                        @if ($ndata->status == 'Diterima')
-                                            Menunggu Pembayaran Customer
-                                        @else
-                                            Menunggu Konfirmasi Pemesanan dari Admin
+                                            {{-- Jika Status Pemesanan Diterima --}}
+                                            @if ($ndata->status == 'Diterima')
+                                                @if ($ndata->getTransaksiFromOrder->status == 'Sedang Diproses')
+                                                    Menunggu Konfirmasi Anda
+                                                @else
+                                                    @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
+                                                        {{ $ndata->getTransaksiFromOrder->status }}
+                                                    @else
+                                                        Menunggu Pembayaran Customer
+                                                    @endif
+                                                @endif
+                                            @else
+                                                {{ $ndata->getTransaksiFromOrder->status }}
+                                            @endif
                                         @endif
                                     @endif
                                 </td>
@@ -92,8 +78,7 @@
                                             @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
                                                 {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                     data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button> --}}
-                                                <input type="button" class="btn btn-sm btn-success" value="LUNAS"
-                                                    disabled>
+                                                <input type="button" class="btn btn-sm btn-success" value="LUNAS" disabled>
                                             @else
                                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                     data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
@@ -107,7 +92,7 @@
                                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                 data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
                                             {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
+                                                    data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
                                         @endif
                                     @else
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
@@ -187,26 +172,29 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            @if ($ndata->getTransaksiFromOrder)
+                                            @if ($ndata->getTransaksiFromOrder->status !== 'Menunggu Konfirmasi Pemesanan')
                                                 <hr>
                                                 <h4>Detail Transaksi</h4>
                                                 <div class="row">
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-6">
                                                         <label for="">Jenis Pembayaran</label>
                                                         <input type="text"
                                                             value="{{ $ndata->getTransaksiFromOrder->jenis_pembayaran }}"
                                                             readonly>
                                                     </div>
-                                                    <div class="col-lg-4">
-                                                        <label for="">Nama Bank</label>
-                                                        <input type="text"
-                                                            value="{{ $ndata->getTransaksiFromOrder->bank }}" readonly>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <label for="">Nama Rekening</label>
-                                                        <input type="text"
-                                                            value="{{ $ndata->getTransaksiFromOrder->namaRek }}" readonly>
-                                                    </div>
+                                                    @if ($ndata->getTransaksiFromOrder->jenis_pembayaran == 'Online')
+                                                        <div class="col-lg-6">
+                                                            <label for="">Nama Bank</label>
+                                                            <input type="text"
+                                                                value="{{ $ndata->getTransaksiFromOrder->bank }}" readonly>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label for="">Nama Rekening</label>
+                                                            <input type="text"
+                                                                value="{{ $ndata->getTransaksiFromOrder->namaRek }}"
+                                                                readonly>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-lg-6">
                                                         <label for="">Total Pembayaran</label>
                                                         <input type="text"
@@ -225,11 +213,13 @@
                                                                 readonly>
                                                         @endif
                                                     </div>
-                                                    <div class="col-lg-12">
-                                                        <label for="">Bukti Pembayaran</label>
-                                                        <img src="/assets/img/bukti/{{ $ndata->getTransaksiFromOrder->bukti_pembayaran }}"
-                                                            width="100" height="100">
-                                                    </div>
+                                                    @if ($ndata->getTransaksiFromOrder->jenis_pembayaran == 'Online')
+                                                        <div class="col-lg-12">
+                                                            <label for="">Bukti Pembayaran</label>
+                                                            <img src="/assets/img/bukti/{{ $ndata->getTransaksiFromOrder->bukti_pembayaran }}"
+                                                                width="100" height="100">
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             @endif
                                         </div>

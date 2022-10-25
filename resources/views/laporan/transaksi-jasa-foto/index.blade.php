@@ -24,6 +24,7 @@
                             <th>No</th>
                             <th>Nama Pemesan</th>
                             <th>Nama Paket</th>
+                            <th>Jenis Transaksi</th>
                             <th>Status Pemesanan</th>
                             <th>Status Pembayaran</th>
                             <th>Total Pembayaran</th>
@@ -38,8 +39,10 @@
                         @foreach ($data as $ndata)
                             <td>{{ $no++ }}</td>
                             <td>{{ $ndata->getOrderFromTransaksi->getDetailOrderFromOrder->nama_pemesan }}</td>
-                            <td>{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}
+                            <td>
+                                {{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}
                             </td>
+                            <td>{{ $ndata->jenis_pembayaran }}</td>
                             <td>
                                 {{ $ndata->getOrderFromTransaksi->status }} | Validasi oleh
                                 {{ $ndata->getOrderFromTransaksi->getAdminFromOrder->name }}
@@ -124,18 +127,20 @@
                                             <hr>
                                             <h4>Detail Transaksi</h4>
                                             <div class="row">
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-6">
                                                     <label for="">Jenis Pembayaran</label>
                                                     <input type="text" value="{{ $ndata->jenis_pembayaran }}" readonly>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <label for="">Nama Bank</label>
-                                                    <input type="text" value="{{ $ndata->bank }}" readonly>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <label for="">Nama Rekening</label>
-                                                    <input type="text" value="{{ $ndata->namaRek }}" readonly>
-                                                </div>
+                                                @if ($ndata->jenis_pembayaran == 'Online')
+                                                    <div class="col-lg-6">
+                                                        <label for="">Nama Bank</label>
+                                                        <input type="text" value="{{ $ndata->bank }}" readonly>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label for="">Nama Rekening</label>
+                                                        <input type="text" value="{{ $ndata->namaRek }}" readonly>
+                                                    </div>
+                                                @endif
                                                 <div class="col-lg-6">
                                                     <label for="">Total Pembayaran</label>
                                                     <input type="text" value="{{ $ndata->total_pembayaran }}" readonly>
@@ -146,11 +151,13 @@
                                                         value="{{ $ndata->status }} | Validasi oleh {{ $ndata->getAdminFromTransaksi->name }}"
                                                         readonly>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <label for="">Bukti Pembayaran</label>
-                                                    <img src="/assets/img/bukti/{{ $ndata->bukti_pembayaran }}"
-                                                        width="100" height="100">
-                                                </div>
+                                                @if ($ndata->jenis_pembayaran == 'Online')
+                                                    <div class="col-lg-12">
+                                                        <label for="">Bukti Pembayaran</label>
+                                                        <img src="/assets/img/bukti/{{ $ndata->bukti_pembayaran }}"
+                                                            width="100" height="100">
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="modal-footer">

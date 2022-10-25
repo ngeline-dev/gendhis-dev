@@ -35,21 +35,42 @@
                     </span>
                 @enderror
             </div>
+            <div class="col-lg-6">
+                <label for="">Tanggal Pemesanan</label>
+                <input type="date" class="@error('tanggal') is-invalid @enderror" name="tanggal"
+                    value="{{ old('tanggal') }}" autofocus>
+                @error('tanggal')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-lg-6">
+                <label for="">Alamat Pemesanan</label>
+                <input type="text" class="@error('alamat') is-invalid @enderror" name="alamat"
+                    value="{{ old('alamat') }}" autofocus>
+                @error('alamat')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
         <hr>
         <h5>Paket</h5>
         <div class="row">
             <div class="col-lg-6">
                 <label for="">Kategori Paket</label>
-                <input type="hidden" name="kategori" value="Travel" readonly>
-                <input type="text" value="Travel" readonly>
+                <input type="hidden" name="kategori" value="Foto" readonly>
+                <input type="text" value="Foto" readonly>
             </div>
             <div class="col-lg-6">
-                <label for="">Paket Travel</label>
+                <label for="">Paket Jasa Foto</label>
                 <select name="paket" id="paket" class="">
                     @foreach ($data as $item)
-                        <option value="{{ $item->id }}" data-harga="{{ $item->getTravelFromProduk->harga_paket }}">
-                            {{ $item->getTravelFromProduk->nama_paket }}</option>
+                        <option value="{{ $item->id }}"
+                            data-harga="{{ $item->getJasaFotoFromProduk->harga_paket }}">
+                            {{ $item->getJasaFotoFromProduk->nama_paket }}</option>
                     @endforeach
                 </select>
             </div>

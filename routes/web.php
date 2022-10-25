@@ -85,9 +85,11 @@ Route::group(['middleware' => 'auth'], function(){
 
         /* List Order Bimbel */
         Route::get('/list-order-bimbel', [OrderController::class, 'ListOrderBimbel'])->name('list-order.bimbel');
+        Route::get('/list-order-bimbel/create', [OrderController::class, 'ListOrderBimbelCreate'])->name('list-order-create.bimbel');
 
         /* List Order Jasa Foto */
         Route::get('/list-order-jasa-foto', [OrderController::class, 'ListOrderJasaFoto'])->name('list-order.foto');
+        Route::get('/list-order-jasa-foto/create', [OrderController::class, 'ListOrderJasaFotoCreate'])->name('list-order-create.foto');
 
         /* Store Offline */
         Route::post('/store-offline', [OrderController::class, 'OfflineStore'])->name('offline.store');
