@@ -90,6 +90,13 @@
         $(function() {
             $('input[name="filter"]').daterangepicker();
         });
+
+        var selection = document.getElementById("paket");
+
+        selection.onchange = function(event) {
+            var harga = event.target.options[event.target.selectedIndex].dataset.harga;
+            $('#harga').val(harga);
+        };
     </script>
 </body>
 

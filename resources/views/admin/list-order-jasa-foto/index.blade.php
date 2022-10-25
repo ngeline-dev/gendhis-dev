@@ -76,29 +76,27 @@
                                         {{-- Jika Transaksi Ada --}}
                                         @if ($ndata->getTransaksiFromOrder)
                                             @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
-                                                {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                    data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button> --}}
-                                                <input type="button" class="btn btn-sm btn-success" value="LUNAS" disabled>
+                                                {{-- <a   data-toggle="modal"data-target="#detail{{ $ndata->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> Detail </a> --}}
+                                                <input class="btn btn-sm btn-success" value="LUNAS" disabled>
                                             @else
-                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                    data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                                {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
-                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                    data-target="#pembayaran{{ $ndata->id }}">Konfirmasi
-                                                    Pembayaran</button>
+                                                <a data-toggle="modal"data-target="#detail{{ $ndata->id }}"
+                                                    class="btn" style="background: #8B0000; color: white;"></i> Detail
+                                                </a>
+                                                {{-- <a   data-toggle="modal" data-target="#pemesanan{{ $ndata->id }}" class="btn" style="background: #008000; color: white;"></i> Konfirmasi </a> --}}
+                                                <a data-toggle="modal"data-target="#pembayaran{{ $ndata->id }}"
+                                                    class="btn" style="background: #008000; color: white;"></i>
+                                                    Konfirmasi </a>
                                             @endif
                                         @else
-                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                            {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                    data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
+                                            <a data-toggle="modal"data-target="#detail{{ $ndata->id }}" class="btn"
+                                                style="background: #8B0000; color: white;"></i> Detail </a>
+                                            {{-- <a   data-toggle="modal" data-target="#pemesanan{{ $ndata->id }}" class="btn" style="background: #008000; color: white;"></i> Konfirmasi </a> --}}
                                         @endif
                                     @else
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
+                                        <a data-toggle="modal" data-target="#detail{{ $ndata->id }}" class="btn"
+                                            style="background: #8B0000; color: white;"></i> Detail </a>
+                                        <a data-toggle="modal" data-target="#pemesanan{{ $ndata->id }}" class="btn"
+                                            style="background: #008000; color: white;"></i> Konfirmasi </a>
                                     @endif
                                 </td>
                             </tr>
