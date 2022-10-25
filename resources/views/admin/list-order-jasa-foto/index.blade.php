@@ -35,7 +35,7 @@
                             <th>Nama Pemesan</th>
                             <th>Nomor Telepon</th>
                             <th>Nama Paket</th>
-                            <th>Request Jasa Foto</th>
+                            {{-- <th>Request Jasa Foto</th> --}}
                             <th>Tanggal Order</th>
                             <th>Status Pemesanan</th>
                             <th>Status Pembayaran</th>
@@ -47,65 +47,76 @@
                             $no = 1;
                         @endphp
                         @foreach ($data as $ndata)
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}</td>
-                            <td>{{ $ndata->getDetailOrderFromOrder->nomor_telepon_pemesan }}</td>
-                            <td>{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}</td>
-                            <td>
-                                {{ $ndata->getProdukFromOrder->ft_tanggal_pemesanan | $ndata->getProdukFromOrder->ft_alamat_pemesanan }}
-                            </td>
-                            <td>{{ $ndata->created_at }}</td>
-                            <td>
-                                {{-- Jika Status Pemesanan Dibatalkan --}}
-                                @if ($ndata->status == 'Dibatalkan')
-                                    {{ $ndata->status }} - {{ $ndata->alasan_pembatalan }}
-                                @else
-                                    {{ $ndata->status }}
-                                @endif
-                            </td>
-                            <td>
-                                {{-- Jika Status Pembayaran Ada --}}
-                                @if ($ndata->getTransaksiFromOrder)
-                                    {{-- Jika Status Pembayaran Dibatalkan --}}
-                                    @if ($ndata->getTransaksiFromOrder->status == 'Dibatalkan')
-                                        {{ $ndata->getTransaksiFromOrder->status }} -
-                                        {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}</td>
+                                <td>{{ $ndata->getDetailOrderFromOrder->nomor_telepon_pemesan }}</td>
+                                <td>{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}</td>
+                                {{-- <td>
+                                    Pada {{ $ndata->getDetailOrderFromOrder->ft_tanggal_pemesanan }}
+                                    di {{ $ndata->getDetailOrderFromOrder->ft_alamat_pemesanan }}
+                                </td> --}}
+                                <td>{{ $ndata->created_at }}</td>
+                                <td>
+                                    {{-- Jika Status Pemesanan Dibatalkan --}}
+                                    @if ($ndata->status == 'Dibatalkan')
+                                        {{ $ndata->status }} - {{ $ndata->alasan_pembatalan }}
                                     @else
-                                        {{ $ndata->getTransaksiFromOrder->status }}
+                                        {{ $ndata->status }}
                                     @endif
-                                @else
-                                    {{-- Jika Status Pemesanan Diterima --}}
-                                    @if ($ndata->status == 'Diterima')
-                                        Menunggu Pembayaran Customer
-                                    @else
-                                        Menunggu Konfirmasi Pemesanan dari Admin
-                                    @endif
-                                @endif
-                            </td>
-                            <td>
-                                {{-- Jika Pemesanan Diterima --}}
-                                @if ($ndata->status == 'Diterima')
-                                    {{-- Jika Transaksi Ada --}}
+                                </td>
+                                <td>
+                                    {{-- Jika Status Pembayaran Ada --}}
                                     @if ($ndata->getTransaksiFromOrder)
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pembayaran{{ $ndata->id }}">Konfirmasi Pembayaran</button>
+                                        {{-- Jika Status Pembayaran Dibatalkan --}}
+                                        @if ($ndata->getTransaksiFromOrder->status == 'Dibatalkan')
+                                            {{ $ndata->getTransaksiFromOrder->status }} -
+                                            {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}
+                                        @else
+                                            {{ $ndata->getTransaksiFromOrder->status }}
+                                        @endif
+                                    @else
+                                        {{-- Jika Status Pemesanan Diterima --}}
+                                        @if ($ndata->status == 'Diterima')
+                                            Menunggu Pembayaran Customer
+                                        @else
+                                            Menunggu Konfirmasi Pemesanan dari Admin
+                                        @endif
+                                    @endif
+                                </td>
+                                <td>
+                                    {{-- Jika Pemesanan Diterima --}}
+                                    @if ($ndata->status == 'Diterima')
+                                        {{-- Jika Transaksi Ada --}}
+                                        @if ($ndata->getTransaksiFromOrder)
+                                            @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
+                                                {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                    data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button> --}}
+                                                <input type="button" class="btn btn-sm btn-success" value="LUNAS"
+                                                    disabled>
+                                            @else
+                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                    data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
+                                                {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
+                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                    data-target="#pembayaran{{ $ndata->id }}">Konfirmasi
+                                                    Pembayaran</button>
+                                            @endif
+                                        @else
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
+                                            {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
+                                        @endif
                                     @else
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                             data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                             data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
                                     @endif
-                                @else
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                        data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                        data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
-                                @endif
-                            </td>
+                                </td>
+                            </tr>
 
                             <!-- Modal Detail Pemesanan -->
                             <div id="detail{{ $ndata->id }}" class="modal fade" role="dialog">

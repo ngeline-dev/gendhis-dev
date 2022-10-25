@@ -115,7 +115,11 @@ class OrderController extends Controller
         $getProduk = ProdukModel::where('kategori', 'Travel')->pluck('id')->toArray();
 
         $data = OrderModel::whereIn('produk_id', $getProduk)
-            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getTravelFromProduk','getTransaksiFromOrder'])->get();
+            ->with([
+                'getDetailOrderFromOrder',
+                'getProdukFromOrder.getTravelFromProduk',
+                'getTransaksiFromOrder'])
+            ->latest()->get();
         return view('admin.list-order-travel.index', compact('data'));
     }
 
@@ -124,7 +128,11 @@ class OrderController extends Controller
         $getProduk = ProdukModel::where('kategori', 'Bimbel')->pluck('id')->toArray();
 
         $data = OrderModel::whereIn('produk_id', $getProduk)
-            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getBimbelFromProduk','getTransaksiFromOrder'])->get();
+            ->with([
+                'getDetailOrderFromOrder',
+                'getProdukFromOrder.getBimbelFromProduk',
+                'getTransaksiFromOrder'])
+            ->latest()->get();
         return view('admin.list-order-bimbel.index', compact('data'));
     }
 
@@ -133,7 +141,14 @@ class OrderController extends Controller
         $getProduk = ProdukModel::where('kategori', 'Foto')->pluck('id')->toArray();
 
         $data = OrderModel::whereIn('produk_id', $getProduk)
-            ->with(['getDetailOrderFromOrder','getProdukFromOrder.getJasaFotoFromProduk','getTransaksiFromOrder'])->get();
+            ->with([
+                'getDetailOrderFromOrder',
+                'getProdukFromOrder.getJasaFotoFromProduk',
+                'getTransaksiFromOrder'])
+            // ->whereHas('getTransaksiFromOrder',  function($q) {
+            //     $q->where('status', 'Diterima');
+            // })
+            ->latest()->get();
         return view('admin.list-order-jasa-foto.index', compact('data'));
     }
 

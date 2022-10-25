@@ -80,6 +80,12 @@
                                                         value="{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getTravelFromProduk->nama_paket }}"
                                                         readonly>
                                                 </div>
+                                                <div class="col-lg-6">
+                                                    <label for="">Jadwal Liburan</label>
+                                                    <input type="text"
+                                                        value="{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getTravelFromProduk->tanggal_travel }} - {{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getTravelFromProduk->waktu_travel }}"
+                                                        readonly>
+                                                </div>
                                             </div>
                                             <hr>
                                             <h4>Detail Pemesanan</h4>

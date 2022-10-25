@@ -1,5 +1,5 @@
 @section('content')
-@extends('layouts.app')
+    @extends('layouts.app')
 @section('title', 'Master Data Kelola Admin')
 @section('heading', 'Master Data Kelola Admin')
 @section('page', 'Master Data Kelola Admin')
@@ -25,9 +25,8 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control @error('role') is-invalid @enderror"
-                                name="role" id="role" placeholder="Role"
-                                value="{{ old('role') }}" autofocus>
+                            <input type="text" class="form-control @error('role') is-invalid @enderror" name="role"
+                                id="role" placeholder="Role" value="Admin" autofocus readonly>
                             @error('role')
                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
@@ -36,9 +35,8 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" id="email" placeholder="Email"
-                                value="{{ old('email') }}" autofocus>
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
+                                id="email" placeholder="Email" value="{{ old('email') }}" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
@@ -47,9 +45,8 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Status</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control @error('status') is-invalid @enderror"
-                                name="status" id="status" placeholder="Status"
-                                value="{{ old('status') }}" autofocus>
+                            <input type="text" class="form-control @error('status') is-invalid @enderror" name="status"
+                                id="status" placeholder="Status" value="Aktif" autofocus readonly>
                             @error('status')
                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror

@@ -65,17 +65,24 @@
                                 @if ($ndata->status == 'Diterima')
                                     {{-- Jika Transaksi Ada --}}
                                     @if ($ndata->getTransaksiFromOrder)
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pembayaran{{ $ndata->id }}">Konfirmasi Pembayaran</button>
+                                        @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
+                                            {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button> --}}
+                                            <input type="button" class="btn btn-sm btn-success" value="LUNAS" disabled>
+                                        @else
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
+                                            {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#pembayaran{{ $ndata->id }}">Konfirmasi
+                                                Pembayaran</button>
+                                        @endif
                                     @else
                                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                             data-target="#detail{{ $ndata->id }}">Detail Pemesanan</button>
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button>
+                                        {{-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                            data-target="#pemesanan{{ $ndata->id }}">Konfirmasi Pemesanan</button> --}}
                                     @endif
                                 @else
                                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
