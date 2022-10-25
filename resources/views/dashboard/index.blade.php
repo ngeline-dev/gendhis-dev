@@ -6,7 +6,7 @@
     <section class="row">
         <div class="col-12 col-lg-9">
             <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
+                <div class="col-6 col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="row">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3 col-md-6">
+                <div class="col-6 col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="row">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3 col-md-6">
+                <div class="col-6 col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="row">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3 col-md-6">
+                <div class="col-7 col-lg-4 col-md-7">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="row">

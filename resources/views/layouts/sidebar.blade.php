@@ -15,7 +15,7 @@
 
                 {{-- MENU KHUSUS ADMIN --}}
                 @if (Auth::user()->role == 'Admin')
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Request::is('list-customer') ? 'active' : '' }}">
                         <a href="{{ route('list.customer') }}" class="sidebar-link">
                             <i class="bi bi-people-fill"></i>
                             <span>List Customer</span>

@@ -15,7 +15,7 @@
                         <label for="" class="col-sm-2 col-form-label">Nama Pemesan</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
-                                id="nama" placeholder="Nama Paket" value="{{ old('nama') }}" autofocus>
+                                id="nama" placeholder="Nama Pemesan" value="{{ old('nama') }}" autofocus>
                             @error('nama')
                                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                             @enderror
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Nomor HP Pemesan</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             <input type="number" class="form-control @error('telepon') is-invalid @enderror" name="telepon"
                                 id="telepon" placeholder="No Telepon Pemesan" value="{{ old('telepon') }}" autofocus>
                             @error('telepon')
@@ -32,8 +32,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Nama Anak yang didaftarkan</label>
-                        <div class="col-sm-8">
+                        <label for="" class="col-sm-2 col-form-label">Nama Anak</label>
+                        <div class="col-sm-6">
                             <input type="text" class="form-control @error('anak') is-invalid @enderror" name="anak"
                                 id="anak" value="{{ old('anak') }}" placeholder="Nama Anak">
                             @error('anak')
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Usia Anak</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             <input type="number" class="form-control @error('usia') is-invalid @enderror" name="usia"
                                 id="usia" placeholder="Usia Anak" value="{{ old('usia') }}">
                             @error('usia')
