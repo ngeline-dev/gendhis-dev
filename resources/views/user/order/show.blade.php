@@ -1,6 +1,5 @@
 @extends('layouts.appcust')
 @section('content')
-
     <header class="item1 header margin-top-0"
         style="background-image: url(images/mobil.jpg);  width: 100%;
     height: 500px; " id="section-home"
@@ -86,45 +85,50 @@
                                                         {{ $ndata->getTransaksiFromOrder->status }} -
                                                         {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}
                                                     @else
-                                                        {{ $ndata->getTransaksiFromOrder->status }}
-                                                    @endif
-                                                @else
-                                                    {{-- Jika Status Pemesanan Diterima --}}
-                                                    @if ($ndata->status == 'Diterima')
-                                                        Menunggu Pembayaran Anda
-                                                    @else
-                                                        Menunggu Konfirmasi Pemesanan dari Admin
+                                                        @if ($ndata->status == 'Diterima')
+                                                            @if ($ndata->getTransaksiFromOrder->status == 'Sedang Diproses')
+                                                                {{ $ndata->getTransaksiFromOrder->status }}
+                                                            @else
+                                                                @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
+                                                                    {{ $ndata->getTransaksiFromOrder->status }}
+                                                                @else
+                                                                    Menunggu Pembayaran Anda
+                                                                @endif
+                                                            @endif
+                                                        @else
+                                                            {{ $ndata->getTransaksiFromOrder->status }}
+                                                        @endif
                                                     @endif
                                                 @endif
                                             </td>
                                             <td>
                                                 {{-- Jika Pemesanan Diterima --}}
                                                 @if ($ndata->status == 'Diterima')
-                                                    {{-- Jika Transaksi Ada --}}
-                                                    @if ($ndata->getTransaksiFromOrder)
-                                                        {{-- Jika Transaki Diterima --}}
-                                                        @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
-                                                            <a class="btn btn-success btn-lg mb-2"
-                                                                href="{{ route('cetak.nota', ['id' => $ndata->getTransaksiFromOrder, 'kategori' => $ndata->getProdukFromOrder->kategori]) }}">Cetak
-                                                                Sekarang</a>
-                                                            <button type="button" class="btn btn-info btn-lg"
-                                                                data-toggle="modal"
-                                                                data-target="#detail{{ $ndata->id }}">Detail
-                                                                Pemesanan</button>
-                                                        @else
-                                                            <button type="button" class="btn btn-info btn-lg"
-                                                                data-toggle="modal"
-                                                                data-target="#detail{{ $ndata->id }}">Detail
-                                                                Pemesanan</button>
-                                                        @endif
-                                                    @else
-                                                        <a class="btn btn-danger btn-lg mb-2"
-                                                            href="{{ route('form.pembayaran', ['id' => $ndata->id]) }}">Bayar
+                                                    {{-- Jika Transaki Diterima --}}
+                                                    @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
+                                                        <a class="btn btn-success btn-lg mb-2"
+                                                            href="{{ route('cetak.nota', ['id' => $ndata->getTransaksiFromOrder, 'kategori' => $ndata->getProdukFromOrder->kategori]) }}"
+                                                            target="_blank">Cetak
                                                             Sekarang</a>
                                                         <button type="button" class="btn btn-info btn-lg"
                                                             data-toggle="modal"
                                                             data-target="#detail{{ $ndata->id }}">Detail
                                                             Pemesanan</button>
+                                                    @else
+                                                        @if ($ndata->getTransaksiFromOrder->status == 'Sedang Diproses')
+                                                            <button type="button" class="btn btn-info btn-lg"
+                                                                data-toggle="modal"
+                                                                data-target="#detail{{ $ndata->id }}">Detail
+                                                                Pemesanan</button>
+                                                        @else
+                                                            <a class="btn btn-danger btn-lg mb-2"
+                                                                href="{{ route('form.pembayaran', ['id' => $ndata->getTransaksiFromOrder->id]) }}">Bayar
+                                                                Sekarang</a>
+                                                            <button type="button" class="btn btn-info btn-lg"
+                                                                data-toggle="modal"
+                                                                data-target="#detail{{ $ndata->id }}">Detail
+                                                                Pemesanan</button>
+                                                        @endif
                                                     @endif
                                                 @else
                                                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
@@ -132,59 +136,60 @@
                                                         Pemesanan</button>
                                                 @endif
                                             </td>
+                                        </tr>
 
-                                            <!-- Modal Detail Pemesanan -->
-                                            <div id="detail{{ $ndata->id }}" class="modal fade" role="dialog">
-                                                <div class="modal-dialog">
+                                        <!-- Modal Detail Pemesanan -->
+                                        <div id="detail{{ $ndata->id }}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
 
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Detail Pemesanan</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h4>Detail Paket</h4>
-                                                            <div class="row">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close"
+                                                            data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Detail Pemesanan</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4>Detail Paket</h4>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <label for="">Kategori Paket</label>
+                                                                <input type="text"
+                                                                    value="{{ $ndata->getProdukFromOrder->kategori }}"
+                                                                    readonly>
+                                                            </div>
+                                                            @if ($ndata->getProdukFromOrder->getTravelFromProduk)
                                                                 <div class="col-lg-6">
-                                                                    <label for="">Kategori Paket</label>
+                                                                    <label for="">Nama Paket</label>
                                                                     <input type="text"
-                                                                        value="{{ $ndata->getProdukFromOrder->kategori }}"
+                                                                        value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->nama_paket }}"
                                                                         readonly>
                                                                 </div>
-                                                                @if ($ndata->getProdukFromOrder->getTravelFromProduk)
-                                                                    <div class="col-lg-6">
-                                                                        <label for="">Nama Paket</label>
-                                                                        <input type="text"
-                                                                            value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->nama_paket }}"
-                                                                            readonly>
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <label for="">Jadwal Berangkat</label>
-                                                                        <input type="text"
-                                                                            value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->tanggal_travel }} - {{ $ndata->getProdukFromOrder->getTravelFromProduk->waktu_travel }}"
-                                                                            readonly>
-                                                                    </div>
-                                                                @endif
-                                                                @if ($ndata->getProdukFromOrder->getBimbelFromProduk)
-                                                                    <div class="col-lg-6">
-                                                                        <label for="">Nama Paket</label>
-                                                                        <input type="text"
-                                                                            value="{{ $ndata->getProdukFromOrder->getBimbelFromProduk->nama_paket }}"
-                                                                            readonly>
-                                                                    </div>
-                                                                @endif
-                                                                @if ($ndata->getProdukFromOrder->getJasaFotoFromProduk)
-                                                                    <div class="col-lg-6">
-                                                                        <label for="">Nama Paket</label>
-                                                                        <input type="text"
-                                                                            value="{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}"
-                                                                            readonly>
-                                                                    </div>
-                                                                @endif
-                                                            </div>
+                                                                <div class="col-lg-6">
+                                                                    <label for="">Jadwal Berangkat</label>
+                                                                    <input type="text"
+                                                                        value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->tanggal_travel }} - {{ $ndata->getProdukFromOrder->getTravelFromProduk->waktu_travel }}"
+                                                                        readonly>
+                                                                </div>
+                                                            @endif
+                                                            @if ($ndata->getProdukFromOrder->getBimbelFromProduk)
+                                                                <div class="col-lg-6">
+                                                                    <label for="">Nama Paket</label>
+                                                                    <input type="text"
+                                                                        value="{{ $ndata->getProdukFromOrder->getBimbelFromProduk->nama_paket }}"
+                                                                        readonly>
+                                                                </div>
+                                                            @endif
+                                                            @if ($ndata->getProdukFromOrder->getJasaFotoFromProduk)
+                                                                <div class="col-lg-6">
+                                                                    <label for="">Nama Paket</label>
+                                                                    <input type="text"
+                                                                        value="{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}"
+                                                                        readonly>
+                                                                </div>
+                                                            @endif
                                                         </div>
+
                                                         <hr>
                                                         <h4>Detail Pemesanan</h4>
                                                         <div class="row">
@@ -194,7 +199,7 @@
                                                                     value="{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}"
                                                                     readonly>
                                                             </div>
-                                                            @if ($ndata->getProdukFromOrder->kategori != 'Bimbel')
+                                                            @if ($ndata->getProdukFromOrder->kategori !== 'Bimbel')
                                                                 <div class="col-lg-6">
                                                                     <label for="">Nomor KTP</label>
                                                                     <input type="text"
@@ -210,13 +215,15 @@
                                                             </div>
                                                             @if ($ndata->getProdukFromOrder->getBimbelFromProduk)
                                                                 <div class="col-lg-6">
-                                                                    <label for="">Nama Anak Yang Didaftarkan</label>
+                                                                    <label for="">Nama Anak Yang
+                                                                        Didaftarkan</label>
                                                                     <input type="text"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->bi_nama_anak }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-6">
-                                                                    <label for="">Usia Anak Yang Didaftarkan</label>
+                                                                    <label for="">Usia Anak Yang
+                                                                        Didaftarkan</label>
                                                                     <input type="text"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->bi_usia_anak }}"
                                                                         readonly>
@@ -248,7 +255,7 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        @if ($ndata->getTransaksiFromOrder)
+                                                        @if ($ndata->getTransaksiFromOrder->status !== 'Menunggu Konfirmasi Pemesanan')
                                                             <hr>
                                                             <h4>Detail Transaksi</h4>
                                                             <div class="row">
@@ -301,30 +308,27 @@
                                                             data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
-
                                             </div>
+                                        </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
         <!--
-                                        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                                            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-                                        </script>
-                                        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-                                            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-                                        </script>
-                                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-                                            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
-                                        </script> -->
+                                                                                                                                                                                                                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                                                                                                                                                                                                                        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+                                                                                                                                                                                                                    </script>
+                                                                                                                                                                                                                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                                                                                                                                                                                                                        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+                                                                                                                                                                                                                    </script>
+                                                                                                                                                                                                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+                                                                                                                                                                                                                        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+                                                                                                                                                                                                                    </script> -->
 
         @include('sweetalert::alert')
         </body>
-
     @endsection

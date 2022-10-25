@@ -1,21 +1,24 @@
 @extends('layouts.appcust')
 @section('content')
-<header class="item1 header margin-top-0" style="background-image: url(images/mobil.jpg);  width: 100%;
-    height: 500px; " id="section-home" data-stellar-background-ratio="0.5">
-	<div class="wrapper">
-		<div class="container">
-			<div class="row intro-text align-items-center justify-content-center">
-				<div class="col-md-10 animated tada">
-					<center>
-						<h1 class="site-heading site-animate" style="font-size: 47px;">
-							<strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Layanan Order</strong>
-						</h1><br><br><br><br>
-					</center>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+    <header class="item1 header margin-top-0"
+        style="background-image: url(images/mobil.jpg);  width: 100%;
+    height: 500px; " id="section-home"
+        data-stellar-background-ratio="0.5">
+        <div class="wrapper">
+            <div class="container">
+                <div class="row intro-text align-items-center justify-content-center">
+                    <div class="col-md-10 animated tada">
+                        <center>
+                            <h1 class="site-heading site-animate" style="font-size: 47px;">
+                                <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Layanan
+                                    Order</strong>
+                            </h1><br><br><br><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <br><br><br><br>
 
     <!-- CONTENT =============================-->
@@ -59,7 +62,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            @if ($data->kategori != 'Bimbel')
+                            @if ($data->kategori !== 'Bimbel')
                                 <div class="col-lg-12">
                                     <label for="">No KTP Pemesan</label>
                                     <input type="text" class="@error('ktp') is-invalid @enderror" name="ktp"

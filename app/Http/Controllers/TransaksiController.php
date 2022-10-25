@@ -37,13 +37,11 @@ class TransaksiController extends Controller
         if(!$validator->passes()){
             return redirect()->back()->withInput()->withErrors($validator->errors()->toArray());
         } else {
-            $data = new TransaksiModel;
-            $data->order_id = $id;
+            $data = TransaksiModel::where('id', $id)->first();
             $data->jenis_pembayaran = 'Online';
             $data->bank = $request->bank;
             $data->namaRek = $request->rek;
             $data->total_pembayaran = $request->total;
-            $data->expired_at = \Carbon\Carbon::now()->subDays(1)->format('Y-m-d H:i:s');
 
             if ($request->hasFile('bukti')){
                 $file = $request->file('bukti');
@@ -53,6 +51,7 @@ class TransaksiController extends Controller
                 $data->bukti_pembayaran = $filename;
             }
 
+            $data->status = 'Sedang Diproses';
             $data->save();
 
             Alert::success('Berhasil Melakukan Pembayaran');
@@ -111,7 +110,7 @@ class TransaksiController extends Controller
             ->whereHas('getOrderFromTransaksi',  function($q) use($getProduk)  {
                 $q->whereIn('produk_id', $getProduk);
             })
-            ->get();
+            ->latest()->get();
         return view('laporan.transaksi-travel.index', compact('data'));
     }
 
@@ -134,7 +133,7 @@ class TransaksiController extends Controller
             $q->whereIn('produk_id', $getProduk);
         })
         ->whereBetween('created_at', [$start, $end])
-        ->get();
+        ->latest()->get();
 
         $pdf = PDF::loadView('laporan.transaksi-travel.cetak', ['data' => $data, 'ndate' => $date])->setPaper('A4', 'landscape');
 
@@ -155,7 +154,7 @@ class TransaksiController extends Controller
             ->whereHas('getOrderFromTransaksi',  function($q) use($getProduk)  {
                 $q->whereIn('produk_id', $getProduk);
             })
-            ->get();
+            ->latest()->get();
         return view('laporan.transaksi-bimbel.index', compact('data'));
     }
 
@@ -178,7 +177,7 @@ class TransaksiController extends Controller
             $q->whereIn('produk_id', $getProduk);
         })
         ->whereBetween('created_at', [$start, $end])
-        ->get();
+        ->latest()->get();
 
         $pdf = PDF::loadView('laporan.transaksi-bimbel.cetak', ['data' => $data, 'ndate' => $date])->setPaper('A4', 'landscape');
 
@@ -199,7 +198,7 @@ class TransaksiController extends Controller
             ->whereHas('getOrderFromTransaksi',  function($q) use($getProduk)  {
                 $q->whereIn('produk_id', $getProduk);
             })
-            ->get();
+            ->latest()->get();
         return view('laporan.transaksi-jasa-foto.index', compact('data'));
     }
 
@@ -222,7 +221,7 @@ class TransaksiController extends Controller
             $q->whereIn('produk_id', $getProduk);
         })
         ->whereBetween('created_at', [$start, $end])
-        ->get();
+        ->latest()->get();
 
         $pdf = PDF::loadView('laporan.transaksi-jasa-foto.cetak', ['data' => $data, 'ndate' => $date])->setPaper('A4', 'landscape');
 

@@ -17,14 +17,14 @@ class CreateTbTransaksiTable extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('admin_id')->nullable();
-            $table->string('jenis_pembayaran'); //('Online', 'Offline')
-            $table->string('bank');
-            $table->string('namaRek');
-            $table->integer('total_pembayaran');
-            $table->string('bukti_pembayaran');
-            $table->string('status', 50)->default('Sedang Diproses'); //('Diterima', 'Dibatalkan')
+            $table->string('jenis_pembayaran')->default('Online'); //('Online', 'Offline')
+            $table->string('bank')->nullable();
+            $table->string('namaRek')->nullable();
+            $table->integer('total_pembayaran')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
+            $table->string('status', 50)->default('Menunggu Konfirmasi Pemesanan'); //('Diterima', 'Dibatalkan')
             $table->string('alasan_pembatalan')->nullable();
-            $table->dateTime('expired_at');
+            $table->dateTime('expired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

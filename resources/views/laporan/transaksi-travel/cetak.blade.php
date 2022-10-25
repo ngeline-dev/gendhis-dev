@@ -8,6 +8,7 @@
                 <th>No</th>
                 <th>Nama Pemesan</th>
                 <th>Nama Paket</th>
+                <th>Jenis Transaksi</th>
                 <th>Tanggal Pembayaran</th>
                 <th>Total Bayar</th>
             </thead>
@@ -20,6 +21,7 @@
                 <td>{{ $no++ }}</td>
                 <td>{{ $ndata->getOrderFromTransaksi->getDetailOrderFromOrder->nama_pemesan }}</td>
                 <td>{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getTravelFromProduk->nama_paket }}</td>
+                <td>{{ $ndata->jenis_pembayaran }}</td>
                 <td>{{ $ndata->created_at }}</td>
                 <td>
                     Rp {{ number_format($ndata->total_pembayaran, 2, ',', '.') }}

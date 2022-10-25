@@ -81,12 +81,16 @@ Route::group(['middleware' => 'auth'], function(){
 
         /* List Order Travel */
         Route::get('/list-order-travel', [OrderController::class, 'ListOrderTravel'])->name('list-order.travel');
+        Route::get('/list-order-travel/create', [OrderController::class, 'ListOrderTravelCreate'])->name('list-order-create.travel');
 
         /* List Order Bimbel */
         Route::get('/list-order-bimbel', [OrderController::class, 'ListOrderBimbel'])->name('list-order.bimbel');
 
         /* List Order Jasa Foto */
         Route::get('/list-order-jasa-foto', [OrderController::class, 'ListOrderJasaFoto'])->name('list-order.foto');
+
+        /* Store Offline */
+        Route::post('/store-offline', [OrderController::class, 'OfflineStore'])->name('offline.store');
 
         /* Konfirmasi */
         Route::post('/konfirmasi-order/{id}', [OrderController::class, 'KonfirmasiOrder'])->name('order.konfirmasi');
