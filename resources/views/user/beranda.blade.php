@@ -28,7 +28,7 @@
 
     <br><br><br><br>
     <div class="item content">
-	<div class="container toparea">
+	<div class="container topareaberanda">
 		<div class="row text-center">
 			<div class="col-md-4">
 				<div class="col editContent">
@@ -63,9 +63,56 @@
 			</div>
 		</div>
 	</div>
-</div><br><br>
 
-    <section class="layanan" id="paket"> 
+    <section class="item content">
+	<div class="container toparea2">
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">APA ITU CV GENDHIS</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="productbox2">
+					<img src="assets/bg-web.png" alt="" width="100%">
+					<div class="clearfix">
+					</div>
+					<br />
+					<div class="product-details text-left">
+						<p style="font-size: 15px; color: #444; text-align:justify;"> Deskripsi agar pelanggan mau pesan/ ajakan .
+							<a target="_blank" rel="nofollow" href="{{ url('booking') }}">Pesan Sekarang</a>
+						</p>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-4">
+				<h2 class="btn btn-buynow">GENDHIS</h2>
+				<div class="properties-box">
+                <div class="product-details text-left">
+						<p style="font-size: 15px; color: #444; text-align:justify;"> Deskripsi Singkat untuk menuju halaman tentang gendhis.
+							<a target="_blank" rel="nofollow" href="{{ url('booking') }}">Tentang Gendhis</a>
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div><br>
+</section>
+
+<section class="item content" id="paket">
+	<div class="container">
+		<div class="underlined-title">
+			<div class="editContent">
+			</div>
+		</div>
         <center><h2>PILIH PAKET<h2></center>
         <br>
         <div class="card-deck">
@@ -102,7 +149,8 @@
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     </div><br><br>
 @endsection
