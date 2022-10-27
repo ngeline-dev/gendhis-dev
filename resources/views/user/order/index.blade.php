@@ -1,7 +1,7 @@
 @extends('layouts.appcust')
 @section('content')
     <header class="item1 header margin-top-0"
-        style="background-image: url(images/mobil.jpg);  width: 100%;
+        style="background-image: url('assets/bg-web.png');  width: 100%;
     height: 500px; " id="section-home"
         data-stellar-background-ratio="0.5">
         <div class="wrapper">
@@ -12,16 +12,13 @@
                             <h1 class="site-heading site-animate" style="font-size: 47px;">
                                 <strong class="d-block" data-scrollreveal="enter top over 1.5s after 0.1s">Layanan
                                     Order</strong>
-                            </h1><br><br><br><br>
+                            </h1><br><br><br><br><br><br><br>
                         </center>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <br><br><br><br>
-
-    <!-- CONTENT =============================-->
     <section class="item content">
         <div class="container toparea">
             <div class="underlined-title">
