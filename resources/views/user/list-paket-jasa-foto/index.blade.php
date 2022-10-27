@@ -1,10 +1,38 @@
 @extends('layouts.appcust')
 
 @section('content')
+<div class="container py-4">
+<br><br><br>
+    <center>
+        <h2>PAKET FOTO<h2>
+    </center>
+        <br>
+    <div class="row mb-2">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/beranda') }}">Beranda</a></li>
+                    <li class="breadcrumb-item active text-dark" aria-current="page" >Daftar Paket Foto</li>
+                            
+                    <div class="col-md-7" style="position: absoulte; top: 5%; left: 56%">
+                        <div class="input-group mb-3">
+                        <form action="{{ url('cari') }}" method="GET">
+                            <input type="text" name="name" placeholder="Cari..." class="form-control bg-light" style="color: black;" >
+                        </form>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"  style="background-color: #8B0000;" id="basic-addon1">
+                                    <i class="fas fa-search" style="color: white;"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ol>
+            </nav>
+        </div>
+                            
+    </div>
+
     <section class="layanan" id="layanan">
-        <center>
-            <h2>PAKET TRAVEL<h2>
-        </center>
         <br>
         <div class="content-wrapper">
             <div class="row">
