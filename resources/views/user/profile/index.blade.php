@@ -8,18 +8,6 @@
             background-size: cover;
             background-attachment: scroll;
         }
-
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 1082px;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-        }
     </style>
     <div class="container py-4">
         <br><br><br>
