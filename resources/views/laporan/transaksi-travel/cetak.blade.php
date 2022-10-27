@@ -1,8 +1,20 @@
+<!DOCTYPE html>
 <html>
 
+<head>
+    <title>LAPORAN TRANSAKSI TRAVEL CV GENDHIS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
 <body>
+    <center>
+        <p style="color: #008080;"><b style="font-size: 24px;">LAPORAN TRANSAKSI TRAVEL CV GENDHIS </b><br> Jl. Pesantren No <br> No. HP : 0852-3577-5571
+        </p>
+    </center>
+    <hr style="color: gray;">
+
     <h4>{{ $ndate[0] }} - {{ $ndate[1] }}</h4>
-    <table>
+    <table class="table table-striped">
         <thead>
             <thead>
                 <th>No</th>
@@ -18,6 +30,7 @@
                 $sum = 0;
             @endphp
             @foreach ($data as $ndata)
+            <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $ndata->getOrderFromTransaksi->getDetailOrderFromOrder->nama_pemesan }}</td>
                 <td>{{ $ndata->getOrderFromTransaksi->getProdukFromOrder->getTravelFromProduk->nama_paket }}</td>
@@ -31,15 +44,19 @@
                     $sum += $ndata->total_pembayaran;
                 @endphp
             @endforeach
+            <tr>
         </tbody>
+        <br><br>
+
         <tfoot>
-            <td>Total</td>
-            <td>
+            <td colspan="5" class="text-right">Total</td>
+            <td colspan = "1" class="text-right">
                 Rp {{ number_format($sum, 2, ',', '.') }}
             </td>
         </tfoot>
         </thead>
     </table>
+    
 </body>
 
 </html>
