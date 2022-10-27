@@ -1,26 +1,65 @@
 @extends('layouts.appcust')
 @section('content')
-    <br><br><br><br>
+
 
     <!-- CONTENT =============================-->
-    <section class="item content">
-        <div class="container toparea">
-            <div class="underlined-title">
-                <div class="editContent">
-                    <h1 class="text-center latestitems" style="font-size: 18px;">Silahkan isi form dibawah ini :)</h1>
-                </div>
-                <div class="wow-hr type_short">
-                    <span class="wow-hr-h">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </span>
+    <div class="container py-4">
+    <br><br><br>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url('/home') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+        </div>
+        <div class="col-md-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/beranda') }}">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('history-order') }}"> Riwayat</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Pembayaran</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-12 mt-2">
+            <div class="card shadow">
+                <div class="card-body" style="color: black;">
+                    <p>Untuk pembayaran silahkan transfer ke rekening dibawah ini :</p>
+                    <div class="media">
+                        <img class="mr-3" src="{{ url('images/bri.png') }}" alt="Bank BRI" width="60">
+                        <div class="media-body">
+                            <h5 class="mt-0" style="color: black;">BANK BRI</h5>
+                            transfer Ke NoRek CV Gendhis XXXXXXX-XXXXXXXX-XXXXXXXX atas nama <strong>CV GENDHIS</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                Bayar Ke NoRek CV Gendhis XXXXXXX-XXXXXXXX-XXXXXXXX
-            </div>
-            <form action="{{ route('store.pembayaran', ['id' => $data->id]) }}" method="POST"
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="color: black;"><i style="color: black;" class="fa fa-pencil-alt"></i> Form pembayaran</h4>
+                    @if ($data->getProdukFromOrder->getTravelFromProduk)
+                        <h2 style="color: red; font-size: 12pt;" align="right"> Total pembayaran anda adalah Rp.
+                            <input type="hidden" value="{{ $data->getProdukFromOrder->getTravelFromProduk->harga_paket }}"
+                                name="total" readonly>
+                            <input type="text" value="{{ $data->getProdukFromOrder->getTravelFromProduk->harga_paket }}"
+                                readonly><h2>
+                        @endif
+                        @if ($data->getProdukFromOrder->getBimbelFromProduk)
+                        <h2 style="color: red; font-size: 12pt;" align="right"> Total pembayaran anda adalah Rp.
+                            <input type="hidden" value="{{ $data->getProdukFromOrder->getBimbelFromProduk->harga_paket }}"
+                                name="total" readonly>
+                            <input type="text" value="{{ $data->getProdukFromOrder->getBimbelFromProduk->harga_paket }}"
+                                readonly><h2>
+                        @endif
+                        @if ($data->getProdukFromOrder->getJasaFotoFromProduk)
+                        <h2 style="color: red; font-size: 12pt;" align="right"> Total pembayaran anda adalah Rp.
+                            <input type="hidden"
+                                value="{{ $data->getProdukFromOrder->getJasaFotoFromProduk->harga_paket }}" name="total"
+                                readonly>
+                            <input type="text"
+                                value="{{ $data->getProdukFromOrder->getJasaFotoFromProduk->harga_paket }}" readonly><h2>
+                        @endif
+                </div>
+
+            <div class="col-md-12 mt-2">
+            <form action="{{ route('store.pembayaran', ['id' => $data->id]) }}" method="POST" id="contactform"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -116,9 +155,8 @@
                     </div>
                 </div>
             </form>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-    </section><br><br>
+    </div>
+</div><br><br>
 @endsection
