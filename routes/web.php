@@ -15,6 +15,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ListCustomerController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +118,9 @@ Route::group(['middleware' => 'auth'], function(){
         /* Profile */
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::post('/profile',  [ProfileController::class, 'update']);
+
+        /* About */
+        Route::get('/about', [AboutController::class, 'index'])->name('about');
 
     });
 
