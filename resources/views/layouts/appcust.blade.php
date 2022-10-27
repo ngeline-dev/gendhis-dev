@@ -38,6 +38,16 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css"
+        integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+
 </head>
 
 <body>
@@ -174,18 +184,20 @@
                         Media Sosial Gendhis
                     </p>
                     <p>
-                        <a href="https://api.whatsapp.com/send?phone=6287762586054&text=Halo%20Admin%20Gendhis,%20Saya%20ingin%20bertanya.%20Tolong%20bantu%20Saya.%20" class="social-item"><span class="fab fa-whatsapp"></span></a>
+                        <a href="https://api.whatsapp.com/send?phone=6287762586054&text=Halo%20Admin%20Gendhis,%20Saya%20ingin%20bertanya.%20Tolong%20bantu%20Saya.%20"
+                            class="social-item"><span class="fab fa-whatsapp"></span></a>
                         <a href="#" class="social-item"><span class="fab fa-facebook"></span></a>
-                        <a href="https://www.instagram.com/" class="social-item"><span class="fab fa-instagram"></span></a>
+                        <a href="https://www.instagram.com/" class="social-item"><span
+                                class="fab fa-instagram"></span></a>
                     </p>
                     </p>
-                    
+
                 </div>
             </div>
     </footer>
-    <script src="js/jquery-.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/anim.js"></script>
+    <script src="/js/jquery-.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/anim.js"></script>
     <script>
         //----HOVER CAPTION---//
         jQuery(document).ready(function($) {
@@ -213,6 +225,8 @@
         });
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @yield('js')
     @include('sweetalert::alert')
 </body>
 

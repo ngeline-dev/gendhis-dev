@@ -52,8 +52,11 @@ Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.be
 
 /* List Paket */
 Route::get('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket.travel');
+Route::post('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket-cari.travel');
 Route::get('/list-paket-bimbel', [ListPaketController::class, 'ListBimbel'])->name('list-paket.bimbel');
+Route::post('/list-paket-bimbel', [ListPaketController::class, 'ListBimbel'])->name('list-paket-cari.bimbel');
 Route::get('/list-paket-jasa-foto', [ListPaketController::class, 'ListJasaFoto'])->name('list-paket.foto');
+Route::post('/list-paket-jasa-foto', [ListPaketController::class, 'ListJasaFoto'])->name('list-paket-cari.foto');
 
 /* Middleware && Auth */
 Route::group(['middleware' => 'auth'], function(){

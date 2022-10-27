@@ -107,7 +107,7 @@
                                                     {{-- Jika Transaki Diterima --}}
                                                     @if ($ndata->getTransaksiFromOrder->status == 'Diterima')
                                                         <a class="btn btn-success btn-lg mb-2"
-                                                            href="{{ route('cetak.nota', ['id' => $ndata->getTransaksiFromOrder, 'kategori' => $ndata->getProdukFromOrder->kategori]) }}"
+                                                            href="{{ route('cetak.nota', ['id' => $ndata->getTransaksiFromOrder->id, 'kategori' => $ndata->getProdukFromOrder->kategori]) }}"
                                                             target="_blank">Cetak
                                                             Sekarang</a>
                                                         <button type="button" class="btn btn-info btn-lg"
@@ -140,7 +140,7 @@
 
                                         <!-- Modal Detail Pemesanan -->
                                         <div id="detail{{ $ndata->id }}" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-lg">
 
                                                 <!-- Modal content-->
                                                 <div class="modal-content">
@@ -152,7 +152,7 @@
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <label for="">Kategori Paket</label>
-                                                                <input type="text"
+                                                                <input type="text" class="form-control text-secondary"
                                                                     value="{{ $ndata->getProdukFromOrder->kategori }}"
                                                                     readonly>
                                                             </div>
@@ -160,12 +160,14 @@
                                                                 <div class="col-lg-6">
                                                                     <label for="">Nama Paket</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->nama_paket }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <label for="">Jadwal Berangkat</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getProdukFromOrder->getTravelFromProduk->tanggal_travel }} - {{ $ndata->getProdukFromOrder->getTravelFromProduk->waktu_travel }}"
                                                                         readonly>
                                                                 </div>
@@ -174,6 +176,7 @@
                                                                 <div class="col-lg-6">
                                                                     <label for="">Nama Paket</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getProdukFromOrder->getBimbelFromProduk->nama_paket }}"
                                                                         readonly>
                                                                 </div>
@@ -182,6 +185,7 @@
                                                                 <div class="col-lg-6">
                                                                     <label for="">Nama Paket</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getProdukFromOrder->getJasaFotoFromProduk->nama_paket }}"
                                                                         readonly>
                                                                 </div>
@@ -193,7 +197,7 @@
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <label for="">Nama Pemesan</label>
-                                                                <input type="text"
+                                                                <input type="text" class="form-control text-secondary"
                                                                     value="{{ $ndata->getDetailOrderFromOrder->nama_pemesan }}"
                                                                     readonly>
                                                             </div>
@@ -201,13 +205,14 @@
                                                                 <div class="col-lg-6">
                                                                     <label for="">Nomor KTP</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->nomor_ktp_pemesan }}"
                                                                         readonly>
                                                                 </div>
                                                             @endif
                                                             <div class="col-lg-6">
                                                                 <label for="">Nomor Telepon</label>
-                                                                <input type="text"
+                                                                <input type="text" class="form-control text-secondary"
                                                                     value="{{ $ndata->getDetailOrderFromOrder->nomor_telepon_pemesan }}"
                                                                     readonly>
                                                             </div>
@@ -216,6 +221,7 @@
                                                                     <label for="">Nama Anak Yang
                                                                         Didaftarkan</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->bi_nama_anak }}"
                                                                         readonly>
                                                                 </div>
@@ -223,6 +229,7 @@
                                                                     <label for="">Usia Anak Yang
                                                                         Didaftarkan</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->bi_usia_anak }}"
                                                                         readonly>
                                                                 </div>
@@ -231,12 +238,14 @@
                                                                 <div class="col-lg-6">
                                                                     <label for="">Tanggal Pemesanan</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->ft_tanggal_pemesanan }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <label for="">Alamat Pemesanan</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getDetailOrderFromOrder->ft_alamat_pemesanan }}"
                                                                         readonly>
                                                                 </div>
@@ -245,11 +254,13 @@
                                                                 <label for="">Status Pemesanan</label>
                                                                 @if ($ndata->status == 'Dibatalkan')
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->status }} - {{ $ndata->alasan_pembatalan }}"
                                                                         readonly>
                                                                 @else
-                                                                    <input type="text" value="{{ $ndata->status }}"
-                                                                        readonly>
+                                                                    <input type="text"
+                                                                        class="form-control text-secondary"
+                                                                        value="{{ $ndata->status }}" readonly>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -260,24 +271,28 @@
                                                                 <div class="col-lg-4">
                                                                     <label for="">Jenis Pembayaran</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getTransaksiFromOrder->jenis_pembayaran }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <label for="">Nama Bank</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getTransaksiFromOrder->bank }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <label for="">Nama Rekening</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getTransaksiFromOrder->namaRek }}"
                                                                         readonly>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <label for="">Total Pembayaran</label>
                                                                     <input type="text"
+                                                                        class="form-control text-secondary"
                                                                         value="{{ $ndata->getTransaksiFromOrder->total_pembayaran }}"
                                                                         readonly>
                                                                 </div>
@@ -285,10 +300,12 @@
                                                                     <label for="">Status Pembayaran</label>
                                                                     @if ($ndata->getTransaksiFromOrder->status == 'Dibatalkan')
                                                                         <input type="text"
+                                                                            class="form-control text-secondary"
                                                                             value="{{ $ndata->getTransaksiFromOrder->status }} - {{ $ndata->getTransaksiFromOrder->alasan_pembatalan }}"
                                                                             readonly>
                                                                     @else
                                                                         <input type="text"
+                                                                            class="form-control text-secondary"
                                                                             value="{{ $ndata->getTransaksiFromOrder->status }}"
                                                                             readonly>
                                                                     @endif
@@ -316,6 +333,6 @@
                 </div>
             </div>
         </div>
-        @include('sweetalert::alert')
-        </body>
+        {{-- @include('sweetalert::alert')
+        </body> --}}
     @endsection
