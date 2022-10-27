@@ -37,6 +37,7 @@
                             $no = 1;
                         @endphp
                         @foreach ($data as $ndata)
+                        <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $ndata->getOrderFromTransaksi->getDetailOrderFromOrder->nama_pemesan }}</td>
                             <td>
@@ -163,6 +164,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        </tr>
                     </tbody>
                 </table>
             </div>
