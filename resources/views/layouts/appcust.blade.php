@@ -170,7 +170,16 @@
                         aria-hidden="true" style="color: #B22222"></i> Mahasiswa Politeknik Negeri Malang PSDKU Kota
                     Kediri
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>
+                        Media Sosial Gendhis
                     </p>
+                    <p>
+                        <a href="https://api.whatsapp.com/send?phone=6287762586054&text=Halo%20Admin%20Gendhis,%20Saya%20ingin%20bertanya.%20Tolong%20bantu%20Saya.%20" class="social-item"><span class="fab fa-whatsapp"></span></a>
+                        <a href="#" class="social-item"><span class="fab fa-facebook"></span></a>
+                        <a href="https://www.instagram.com/" class="social-item"><span class="fab fa-instagram"></span></a>
+                    </p>
+                    </p>
+                    
                 </div>
             </div>
     </footer>
