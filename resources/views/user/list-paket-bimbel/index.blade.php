@@ -17,16 +17,15 @@
                         <div class="col-md-7" style="position: absoulte; top: 5%; left: 43%">
                             <form action="{{ route('list-paket-cari.bimbel') }}" method="POST">
                                 @csrf
-                                <>
-                                    <span>Cari Nama Paket : </span>
-                                    <input type="text" name="cari" class="form-control-sm w-50"
-                                        value="{{ $msg }}" required>
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-search" style="color: white;"></i>
-                                    </button>
-                                    <a href="{{ route('list-paket.bimbel') }}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close" style="color: white;"></i>
-                                    </a>
+                                <span>Cari Nama Paket : </span>
+                                <input type="text" name="cari" class="form-control-sm w-50"
+                                    value="{{ $msg }}" required>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search" style="color: white;"></i>
+                                </button>
+                                <a href="{{ route('list-paket.bimbel') }}" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-close" style="color: white;"></i>
+                                </a>
                             </form>
                         </div>
                     </ol>
