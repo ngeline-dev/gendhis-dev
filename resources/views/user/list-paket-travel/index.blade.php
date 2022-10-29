@@ -18,14 +18,16 @@
                             <form action="{{ route('list-paket-cari.travel') }}" method="POST">
                                 @csrf
                                 <span>
-                                    <input type="text" name="cari" class="form-control-sm w-50"
-                                        value="{{ $msg }}" required>
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-search" style="color: white;"></i>
-                                    </button>
-                                    <a href="{{ route('list-paket.travel') }}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close" style="color: white;"></i>
-                                    </a>
+                                    <span> Cari Nama Paket :
+                                        <input type="text" name="cari" class="form-control-sm w-50"
+                                            value="{{ $msg }}" required>
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-search" style="color: white;"></i>
+                                        </button>
+                                        <a href="{{ route('list-paket.travel') }}" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-close" style="color: white;"></i>
+                                        </a>
+                                    </span>
                                 </span>
                             </form>
                         </div>

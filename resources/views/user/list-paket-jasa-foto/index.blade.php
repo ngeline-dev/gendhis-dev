@@ -18,6 +18,7 @@
                             <form action="{{ route('list-paket-cari.foto') }}" method="POST">
                                 @csrf
                                 <span>
+                                    <span>Cari Nama Paket : </span>
                                     <input type="text" name="cari" class="form-control-sm w-50"
                                         value="{{ $msg }}" required>
                                     <button type="submit" class="btn btn-primary btn-sm">
