@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item"><a href="{{ url('/beranda') }}">Beranda</a></li>
                         <li class="breadcrumb-item active text-dark" aria-current="page">Daftar Paket Travel</li>
 
-                        <div class="col-md-7" style="position: absoulte; top: 5%; left: 43%">
+                        <div class="col-md-7" style="position: absoulte; top: 5%; left: 32%">
                             <form action="{{ route('list-paket-cari.travel') }}" method="POST">
                                 @csrf
                                 <span>
