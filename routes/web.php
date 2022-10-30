@@ -50,6 +50,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 /* Dashboard Customer */
 Route::get('/beranda', [DashboardController::class, 'indexcust'])->name('user.beranda');
 
+/* About */
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+
 /* List Paket */
 Route::get('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket.travel');
 Route::post('/list-paket-travel', [ListPaketController::class, 'ListTravel'])->name('list-paket-cari.travel');
@@ -121,9 +124,6 @@ Route::group(['middleware' => 'auth'], function(){
         /* Profile */
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::post('/profile',  [ProfileController::class, 'update']);
-
-        /* About */
-        Route::get('/about', [AboutController::class, 'index'])->name('about');
 
     });
 

@@ -9,7 +9,7 @@
                     <div class="col-md-10 animated tada">
                         <center>
                             <h1 class="site-heading site-animate" style="font-size: 47px;">
-                                DESKRIPSI LAYANAN<strong class="d-block"
+                                Penawaran Terbaik Paket Liburan, Bimbel dan Foto hanya ada disini<strong class="d-block"
                                     data-scrollreveal="enter top over 1.5s after 0.1s">GENDHIS</strong></h1>
 
                         </center><br><br>
@@ -35,7 +35,8 @@
                         <span class="numberstep"><i class="far fa-laugh-beam"></i></span>
                         <h3 class="numbertext">KEPUASAN TERJAMIN</h3>
                         <p>
-                            Deskripsi.
+                            Pelayanan Ramah dan
+                            Harga yang Terjangkau
                         </p>
                     </div>
                     <!-- /.col-md-4 -->
@@ -46,7 +47,8 @@
                         <span class="numberstep"><i class="far fa-calendar-alt"></i></i></span>
                         <h3 class="numbertext">JAM OPERASIONAL</h3>
                         <p>
-                            Deskripsi.
+                            Senin s.d Jum'at
+                            08.00 - 14.00
                         </p>
                     </div>
                     <!-- /.col -->
@@ -57,7 +59,8 @@
                         <span class="numberstep"><i class="fas fa-tags"></i></i></span>
                         <h3 class="numbertext">PROMO</h3>
                         <p>
-                            Deskripsi.
+                            Hanya di bulan ini !!!
+                            Dapatkan Diskon s.d 30% Pesan Sekarang
                         </p>
                     </div>
                 </div>
@@ -86,9 +89,9 @@
                             </div>
                             <br />
                             <div class="product-details text-left">
-                                <p style="font-size: 15px; color: #444; text-align:justify;"> Deskripsi agar pelanggan mau
-                                    pesan/ ajakan .
-                                    <a target="_blank" rel="nofollow" href="#">Pesan Sekarang</a>
+                                <p style="font-size: 15px; color: #444; text-align:justify;"> Pilih Paket sesuai kebutuhan
+                                    Anda sekarang !
+                                    <a href="#paket">Pesan Sekarang</a>
                                 </p>
                             </div>
                         </div>
@@ -97,9 +100,11 @@
                         <h2 class="btn btn-buynow">GENDHIS</h2>
                         <div class="properties-box">
                             <div class="product-details text-left">
-                                <p style="font-size: 15px; color: #444; text-align:justify;"> Deskripsi Singkat untuk menuju
-                                    halaman tentang gendhis.
-                                    <a target="_blank" rel="nofollow" href="{{ url('about') }}">Tentang Gendhis</a>
+                                <p style="font-size: 15px; color: #444; text-align:justify;"> Berkomitmen secara signifikan
+                                    dalam pelayanan
+                                    yang kami berikan pada paket Liburan, Bimbel dan Foto. Untuk memberikan Kebahagiaan
+                                    kepada orang-orang sekitar.
+                                    <a href="{{ url('about') }}">Tentang Gendhis</a>
                                 </p>
                             </div>
 
